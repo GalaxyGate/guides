@@ -1,0 +1,29 @@
+site_name: 'GalaxyGate Guides'
+site_description: 'GalaxyGate guides'
+site_author: 'GalaxyGate Community'
+
+# Configuration
+theme:
+  name: 'material'
+  palette:
+    primary: 'deep purple'
+    accent: 'indigo'
+  language: 'en'
+  feature:
+    tabs: true
+
+# Extensions
+markdown_extensions:
+  - admonition
+  - codehilite:
+      guess_lang: false
+  - toc:
+      permalink: true
+
+extra_css:
+  - 'extras/extra.css'
+extra_javascript:
+  - 'extras/extra.js'
+
+nav:
+- Home: 'index.md'

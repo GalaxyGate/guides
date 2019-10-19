@@ -1,0 +1,11 @@
+language: python
+
+python: 3.6
+
+branches: master
+
+install:
+    - pip install mkdocs mkdocs-material pymdown-extensions pygments 
+
+script:
+    - mkdocs build --verbose --clean --strict
