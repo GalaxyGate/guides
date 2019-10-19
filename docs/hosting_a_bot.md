@@ -241,26 +241,49 @@ sudo systemctl restart example.service       #To restart running service
 ```
 
 ### PM2
-Another way, althrough requiring install of another software is PM2 which is a process manager that make sure that processes stay alive after closing SSH. While it is advertised mainly for JavaScript applications, it supports other languages, explicitly showing Bash, Python and Binary files in it documentation.
+
+Another way, although requiring install of another software is PM2 which is a process manager that make sure that processes stay alive after closing SSH. While it is advertised mainly for JavaScript applications, it supports other languages, explicitly showing Bash, Python and Binary files in it documentation.
+
+
 
 #### Installation
-Installation of PM2 is simple one-command process, first you need to make sure you are running Node.JS on your VPS due to it being requirement.  
+
+Installation of PM2 is simple one-command process, first you need to make sure you are running Node.JS on your VPS due to it being requirement. 
+
 After making sure Node is installed use: `npm install pm2@latest -g` to install PM2, and done!
 
+
+
 #### Usage
-PM2 usage is as simple as it installation. To start code you use `pm2 start example.js` where `example.js` is file you want to run, recomendation from my side would be adding switch `-name example` which can be used in control commands. For Example: `pm2 start example.js -name example_program`
+
+PM2 usage is as simple as it installation. To start code you use `pm2 start example.js` where `example.js` is file you want to run, recommendation from my side would be adding switch `-name example` which can be used in control commands. For Example: `pm2 start example.js -name example_program`
+
+
 
 To control app running under PM2 you can use following commands:
+
 ```
+
 pm2 restart app_name
+
 pm2 reload app_name
+
 pm2 stop app_name
-```  
+
+``` 
+
 App name can be either PID of process or name assigned with `-name` switch in command, to check all apps running under PM2 you can use `pm2 ls` which will print result similar to this:
-  ![PM2 list](https://i.imgur.com/LmRD3FN.png "pm2 list")  
-and to disaplay real-time logs you can use `pm2 logs` (for historical entries: `pm2 logs --lines 200` where `200` is ammount of lines you want to go back)
+
+![PM2 list](https://i.imgur.com/LmRD3FN.png "pm2 ls") 
+
+and to display real-time logs you can use `pm2 logs` (for historical entries: `pm2 logs --lines 200` where `200` is amount of lines you want to go back)
+
+
 
 #### What about autostart?
-PM2 by default dont provide autostart, however it has build in script that enables it as feature. PM2 will automatically start all workers under it on restart if you will use this feature.
 
-To enable autostart use `pm2 startup` command
+PM2 by default don’t provide auto start, however it has built in script that enables it as feature. PM2 will automatically start all workers under it on restart if you will use this feature.
+
+
+
+To enable auto start use `pm2 startup` command
