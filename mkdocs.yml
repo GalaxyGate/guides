@@ -27,3 +27,6 @@ extra_javascript:
 
 nav:
 - Home: 'index.md'
+- Hosting:
+    - Discord:
+        - Python: 'discord/hosting_python.md'
