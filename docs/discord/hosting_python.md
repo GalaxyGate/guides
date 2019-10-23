@@ -155,3 +155,63 @@ This will create a new screen 'session' and run your bot on the foreground.
 You can now 'detach' (`CTRL+AD`) from this session so your bot keeps running in the background.
 
 You can re-attach to the running screen by running `screen -r bot` and then terminate your bot by using `CTRL+C`.
+
+### systemd
+
+You can also use systemd as the service manager for your bot. This is the recommended approach for Linux.
+
+
+#### Installation
+
+Systemd requires a service description file to be created.
+
+You can create it using your favorite editor and save it to `/lib/systemd/system/bot.service`:
+```properties
+[Unit]
+Description=Bot
+After=multi-user.target
+[Service]
+WorkingDirectory=/root/botFolder
+User=root
+ExecStart=command --no-prompt
+Type=idle
+Restart=always
+RestartSec=15
+
+[Install]
+WantedBy=multi-user.target
+```  
+
+You need to replace the proper path for the bot folder as well as the startup command.
+
+Assuming the bot files are on `/root/example` the file will look like this for a discord.py bot:
+
+```properties
+[Unit]
+Description=Bot
+After=multi-user.target
+[Service]
+WorkingDirectory=/root/example
+User=root
+ExecStart=/usr/bin/python3 /root/example/example.py --no-prompt
+Type=idle
+Restart=always
+RestartSec=15
+
+[Install]
+WantedBy=multi-user.target
+```
+
+After you finish creating the file, you need to run `sudo systemctl daemon-reload` which will tell systemd to re-scan for services.
+
+#### Usage
+
+Below are some command usages for systemd.
+
+```bash
+sudo systemctl daemon-reload # Re-scans for service changes.
+sudo systemctl enable bot # Enables auto-start for the service named 'bot'.
+sudo systemctl start bot # Starts the 'bot' service.
+sudo systemctl stop bot # Stops the 'bot' service.
+sudo systemctl restart bot # Restarts the 'bot' service.
+```
