@@ -9,6 +9,7 @@ branches: master
 env:
   global:
     - COMMIT=${TRAVIS_COMMIT::8}
+    - REPO=galaxygate/guides
 
 install:
   - pip install mkdocs mkdocs-material pymdown-extensions pygments 
@@ -16,5 +17,6 @@ install:
 
 script:
   - mkdocs build --verbose --clean --strict
-  - docker build -t galaxygate/guides:$COMMIT .
-  - docker push galaxygate/guides
+  - docker build -t $REPO:$COMMIT .
+  - docker tag $REPO:$COMMIT $REPO:latest
+  - docker push $REPO
