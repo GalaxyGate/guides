@@ -51,7 +51,7 @@ npm -v
 ```
 ![Node Version](https://i.imgur.com/T8u5lvN.png)
 
-If you do not get a response from above sor omething went wrong, please take a screenshot of what went wrong and ask us in the support channel via our [support server.](https://discord.gg/jcKEyxn) 
+If you do not get a response from above or something went wrong, please take a screenshot of what went wrong and ask us in the support channel via our [support server.](https://discord.gg/jcKEyxn) 
 
 ### Getting your bot onto the VPS
 Assuming you have an SSH client it should be easy enough to drag a zipped copy of your bot without the node_modules folder and unzip it via terminal.
@@ -81,8 +81,8 @@ To exit hit Control + C (Ctrl + c)
 
 !!! warning
     I: You should always test things before using the methods to ensure the bot can load up fine.
-    
     II: Avoid committing your token to github if you use that.
+    III: Do not copy you node_modules folder use npm install, it saves you time and allows the deps to be built correctly.
 
 ## 24/7
 
@@ -201,7 +201,7 @@ npm install pm2@latest -g
 *note:* Be in the same directory or use absolute paths.
 ```bash
 pm2 start <botfile.js>
-````
+```
 To check the status
 ```bash
 pm2 ls
@@ -214,3 +214,4 @@ pm2 logs 0
 - Use `pm2 save` to save the processes.
 - Use `pm2 resurrect` to revie them in the event of a reboot and the processes did not come back.
 - Pm2 web dashboard can be found [here.](https://pm2.keymetrics.io/)
+- pm2 ls will show all the running node instances.
