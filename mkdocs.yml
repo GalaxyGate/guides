@@ -30,3 +30,4 @@ nav:
 - Hosting:
     - Discord:
         - Python: 'discord/hosting_python.md'
+        - JavaScript: 'discord/hosting_discord_js.md'
