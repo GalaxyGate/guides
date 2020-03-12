@@ -29,6 +29,7 @@ nav:
 - Home: 'index.md'
 - Linux Basics:
   - Creating Sudo User: 'Linux_Basics/create_sudo_user.md'
+  - Fix unable to resolve host: 'Linux_Basics/fix_unable_resolve_host.md'
 - Hosting:
     - Discord:
         - Python: 'discord/hosting_python.md'
