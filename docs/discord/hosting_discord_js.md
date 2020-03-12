@@ -51,13 +51,13 @@ npm -v
 ```
 ![Node Version](https://i.imgur.com/T8u5lvN.png)
 
-If you do not get a response from above or something went wrong, please take a screenshot of what went wrong and ask us in the support channel via our [support server.](https://discord.gg/jcKEyxn) 
+If you do not get a response from above or something went wrong, please take a screenshot of what went wrong and ask us in the support channel in our [support server.](https://discord.gg/jcKEyxn) 
 
 ### Getting your bot onto the VPS
 Assuming you have an SSH client it should be easy enough to drag a zipped copy of your bot without the node_modules folder and unzip it via terminal.
 ```
 cd <bot folder name> // if you haven't already!
-sudo apt install unzip
+sudo apt install unzip -y
 unzip filename.zip
 npm install 
 ```
@@ -73,6 +73,7 @@ OR
 ```bash
 node filename.js // file name being the bot file
 ```
+![node](https://i.imgur.com/Dc18xNa.gif)
 
 If everything went okay at this point of the guide you should notice that the bot should be online in your server, however, you should note that it is running on an SSH session which kills itself when you end the SSH session, to prevent this we have listed a few ways to stop this from happening.
 
@@ -81,7 +82,9 @@ To exit hit Control + C (Ctrl + c)
 
 !!! warning
     I: You should always test things before using the methods to ensure the bot can load up fine.
+
     II: Avoid committing your token to github if you use that.
+
     III: Do not copy you node_modules folder use npm install, it saves you time and allows the deps to be built correctly.
 
 ## 24/7
@@ -199,6 +202,8 @@ npm install pm2@latest -g
 
 #### Starting the bot
 *note:* Be in the same directory or use absolute paths.
+
+#### Commands
 ```bash
 pm2 start <botfile.js>
 ```
@@ -213,5 +218,6 @@ pm2 logs 0
 #### PM2 tips
 - Use `pm2 save` to save the processes.
 - Use `pm2 resurrect` to revie them in the event of a reboot and the processes did not come back.
-- Pm2 web dashboard can be found [here.](https://pm2.keymetrics.io/)
-- pm2 ls will show all the running node instances.
+- PM2 has an webapp which can be found [here.](https://pm2.keymetrics.io/)
+- `pm2 ls` will show all the running node instances.
+- PM2 commands can be found [here](https://devhints.io/pm2)
