@@ -9,10 +9,10 @@ In this guide you will be able to host a minecraft server as well as keeping it 
 * You know how to establish an SSH connection or use an SSH client.
 <br/>
 
-*If you do not know how to connect to your server I would recomend using a SSH client like [bitvise](https://www.bitvise.com/ssh-client-download) or [Putty](https://www.putty.org/) and ask for help in our [support server.](https://discord.gg/jcKEyxn)*
+*If you do not know how to connect to your server I would recommend using a SSH client like [bitvise](https://www.bitvise.com/ssh-client-download) or [Putty](https://www.putty.org/) and ask for help in our [support server.](https://discord.gg/jcKEyxn)*
 
 ## Creating a user for minecraft
-For security purposes, Minecraft should not be run under the root user. We will create a new system user and group with home directory /opt/minecraft that will run the Minecraft server:
+For security purposes, Minecraft should not be ran under the root user. We will create a new system user and group with home directory /opt/minecraft that will run the Minecraft server:
 
 ```
 sudo useradd -r -m -U -d /opt/minecraft -s /bin/bash minecraft

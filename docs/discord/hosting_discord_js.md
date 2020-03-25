@@ -17,27 +17,27 @@ In this guide, I am assuming that:
 
 ## Installation
 
-### node.js
+### NodeJS
 
-For a JavaScript discord bot, you will need to have node.js and npm installed on the server.
-To install node.js & npm run the commands listed.
-You can choose which version to install if you have a preference however I recomend that you should choose V12.
+For a JavaScript discord bot, you will need to have NodeJS and npm installed on the server.
+To install NodeJS & npm run the commands listed.
+You can choose which version to install if you have a preference however I recommend that you should choose v12.
 
-V10
+v10
 ```bash
 sudo apt update
 sudo apt -y install curl dirmngr apt-transport-https lsb-release ca-certificates
 curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash –
 sudo apt -y install nodejs
 ```
-V12
+v12
 ```
 sudo apt update
 sudo apt -y install curl dirmngr apt-transport-https lsb-release ca-certificates
 curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
 sudo apt -y install nodejs
 ```
-V13
+v13
 ```bash
 sudo apt update
 sudo apt -y install curl dirmngr apt-transport-https lsb-release ca-certificates
@@ -83,9 +83,9 @@ To exit hit Control + C (Ctrl + c)
 !!! warning
     I: You should always test things before using the methods to ensure the bot can load up fine.
 
-    II: Avoid committing your token to github if you use that.
+    II: Avoid committing your token to GitHub if you use that.
 
-    III: Do not copy you node_modules folder use npm install, it saves you time and allows the deps to be built correctly.
+    III: Do not copy your node_modules folder use npm install, it saves you time and allows the deps to be built correctly.
 
 ## 24/7
 
@@ -183,13 +183,13 @@ Below are some command usages for systemd.
 sudo systemctl daemon-reload # Re-scans for service changes.
 sudo systemctl enable bot # Enables auto-start for the service named 'bot'.
 sudo systemctl start bot # Starts the 'bot' service.
-sudo systemctl stop bot # Stops the 'bot' service.
+sudo systemctl stops bot # Stops the 'bot' service.
 sudo systemctl restart bot # Restarts the 'bot' service.
 ```
 
 ### PM2
 What is PM2?
-PM2 is a process manager for the JavaScript runtime Node.js which can be used to keep node application alive after a killed SSH session. PM2 can easily start/stop/restart your bot as well as provide logging. 
+PM2 is a process manager for the JavaScript runtime NodeJS which can be used to keep node application alive after a killed SSH session. PM2 can easily start/stop/restart your bot as well as provide logging. 
 
 !!! warning
     PM2 will restart when the bot crashes which can result in a boot loop.
@@ -217,7 +217,7 @@ pm2 logs 0
 ```
 #### PM2 tips
 - Use `pm2 save` to save the processes.
-- Use `pm2 resurrect` to revie them in the event of a reboot and the processes did not come back.
-- PM2 has an webapp which can be found [here.](https://pm2.keymetrics.io/)
+- Use `pm2 resurrect` to revive them in the event of a reboot and the processes did not come back.
+- PM2 has a web app which can be found [here.](https://pm2.keymetrics.io/)
 - `pm2 ls` will show all the running node instances.
 - PM2 commands can be found [here](https://devhints.io/pm2)
