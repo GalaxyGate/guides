@@ -17,14 +17,14 @@ For security purposes, Minecraft should not be run under the root user. We will 
 ```
 sudo useradd -r -m -U -d /opt/minecraft -s /bin/bash minecraft
 ```
-We are not going to set a password for this user. This is good security practice because this user will not be able to login via SSH. To change to the minecraft user you’ll need to be logged in to the server as root or user with sudo privileges.
+We are not going to set a password for this user. This is a good security practice because this user will not be able to login via SSH. To login to the minecraft user you’ll need to be logged in to the server as root or user with sudo privileges.
 
 Before starting with the installation process, make sure you switch to minecraft user.
 
 ```sudo su - minecraft```
 
 ## Installing Java
-To install java I would recomend using the command(s) below rather installing the package version as it is difficult to see what version of java you would get.
+Run the commands below on the Minecraft user from above.
 ```
 curl -sL https://github.com/shyiko/jabba/raw/master/install.sh | bash && . ~/.jabba/jabba.sh
 jabba install openjdk@1.14.0
@@ -32,8 +32,7 @@ jabba alias default openjdk@1.14.0
 ```
 
 ## Getting the server jar
-Please download one of the server Jars from below.
-
+Please download one of the server Jars from below. Currently 1.15.2 is the latest server jar.
 1.15.2
 ```
 wget https://launcher.mojang.com/v1/objects/bb2b6b1aefcd70dfd1892149ac3a215f6c636b07/server.jar
