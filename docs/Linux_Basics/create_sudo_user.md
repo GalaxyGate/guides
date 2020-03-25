@@ -34,12 +34,12 @@ Is the information correct? [Y/n]
 !!! warning
     Make sure to type in `Y` and click enter otherwise you will have to redo the user information prompt!
 ## Granting user sudo
-Now we have added a user that you can login into via ssh, it is now time for us to allow the user to use sudo. We will be using the `usermod` command to add `username` to the `sudo` group.
+Now we have added a user that you can log in into via ssh, it is now time for us to allow the user to use sudo. We will be using the `usermod` command to add `username` to the `sudo` group.
 ```bash
 usermod -aG sudo username
 ```
 Now we will test that if the user we have added is allowed to use sudo or not.
-Use the su command to login to the username you have selected.
+Use the su command to log in to the username you have selected.
 ```bash
 su - username
 ```
@@ -50,7 +50,7 @@ sudo ls /root
 Since only root can read that directory you would require to be either root or have sudo to access the directory.
 
 Response if you have sudo:
-![sudo responde](https://i.imgur.com/UumT15w.png)
+![sudo response](https://i.imgur.com/UumT15w.png)
 
 Response if you don't have sudo:
 ![permission denied sudo](https://i.imgur.com/90u5qng.png)

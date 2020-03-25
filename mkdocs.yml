@@ -35,9 +35,9 @@ nav:
         - Python: 'discord/hosting_python.md'
         - JavaScript: 'discord/hosting_discord_js.md'
 - Games:
-    - Minecraft:
-        - Paper: 'Games/Minecraft/Paper.md'
-        - vanilla: 'Games/Minecraft/Vanilla.md'
+    - Minecraft Java:
+        - Paper: 'Games/Minecraft_Java/Paper.md'
+        - vanilla: 'Games/Minecraft_Java/Vanilla.md'
 - Secruity:
     - Network:
         - test: 'Secruity/index.md'

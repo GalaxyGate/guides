@@ -51,10 +51,10 @@ npm -v
 ```
 ![Node Version](https://i.imgur.com/T8u5lvN.png)
 
-If you do not get a response from above or something went wrong, please take a screenshot of what went wrong and ask us in the support channel in our [support server.](https://discord.gg/jcKEyxn) 
+If you do not get a response from above or something went wrong, please take a screenshot of what went wrong and ask for help in our [support server.](https://discord.gg/jcKEyxn) 
 
 ### Getting your bot onto the VPS
-Assuming you have an SSH client it should be easy enough to drag a zipped copy of your bot without the node_modules folder and unzip it via terminal.
+Assuming you have an SSH client with SFTP it should be easy enough to drag a zipped copy of your bot without the node_modules folder and unzip it via terminal.
 ```
 cd <bot folder name> // if you haven't already!
 sudo apt install unzip -y
@@ -62,7 +62,6 @@ unzip filename.zip
 npm install 
 ```
 ![unzipping](https://i.imgur.com/qZQP3nL.gif)
-
 ### Discord.JS
 
 You can now start your bot using either:
@@ -75,10 +74,6 @@ node filename.js // file name being the bot file
 ```
 ![node](https://i.imgur.com/Dc18xNa.gif)
 
-If everything went okay this far, you're left with one issue.
-While the bot is online in your server, it's only running inside of the current SSH session.
-Once you end that session, the bot's process gets terminated with it.
-To prevent this from happening, here are a few different methods:
 
 To exit hit Control + C (Ctrl + c)
 
@@ -89,9 +84,12 @@ To exit hit Control + C (Ctrl + c)
     II: Avoid committing your token to GitHub if you use that.
 
     III: Do not copy your node_modules folder use npm install, it saves you time and allows the deps to be built correctly.
+If everything went okay this far, you're left with one issue.
+While the bot is online in your server, it's only running inside of the current SSH session.
+Once you end that session, the bot's process gets terminated with it.
+To prevent this from happening, here are a few different methods:
 
 ## 24/7
-
 If you have successfully run the bot from the command line from above without any errors or issues then you should be ready to set up 24/7 bot hosting to keep the bot online.
 
 This has some advantages over simply running it in an SSH session:

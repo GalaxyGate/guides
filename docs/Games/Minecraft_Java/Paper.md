@@ -1,7 +1,7 @@
-# Hosting a vanilla Minecraft server
+# Hosting a Paper Minecraft server
 
 ## Introduction
-In this guide, you will be able to host a Minecraft server as well as keeping it alive without having to be logged in all the time. Before you start, make sure you do meet the requirements and have a basic understanding of Linux, if you have issues or are stuck on a step you can ask for help in our [support server.](https://discord.gg/jcKEyxn)
+In this guide, you will be able to host a Paper Minecraft server as well as keeping it alive without having to be logged in all the time. Before you start, make sure you do meet the requirements and have a basic understanding of Linux, if you have issues or are stuck on a step you can ask for help in our [support server.](https://discord.gg/jcKEyxn)
 
 ## Requirements 
 * You have a Linux VPS (Debian/Ubuntu).
@@ -17,9 +17,9 @@ For security purposes, Minecraft should not be running under the root user. We w
 ```
 sudo useradd -r -m -U -d /opt/Minecraft -s /bin/bash Minecraft
 ```
-We are not going to set a password for this user. This is a good security practice because this user will not be able to login via SSH. To login to the Minecraft user, you’ll need to be logged in to the server as root or user with sudo privileges.
+We are not going to set a password for this user. This is a good security practice because this user will not be able to log in via SSH. To login to the Minecraft user, you’ll need to be logged in to the server as root or user with sudo privileges.
 
-Before starting with the installation process, make sure you switch to Minecraft user.
+Before starting with the installation process, make sure you switch to the Minecraft user.
 
 ```sudo su - Minecraft```
 
@@ -30,28 +30,29 @@ curl -sL https://github.com/shyiko/jabba/raw/master/install.sh | bash && . ~/.ja
 jabba install openjdk@1.14.0
 jabba alias default openjdk@1.14.0
 ```
-
+!!! Information 
+    Run `jabba` to see if was installed correctly. 
 ## Getting the server jar
-Please download one of the server Jars from below. Currently, 1.15.2 is the latest server jar.
+Please download one of the server Jars from below. Currently, 1.15.2 is the latest version.
 1.15.2
 ```
-wget https://launcher.mojang.com/v1/objects/bb2b6b1aefcd70dfd1892149ac3a215f6c636b07/server.jar
-```
-1.15.1
-```
-wget https://launcher.mojang.com/v1/objects/4d1826eebac84847c71a77f9349cc22afd0cf0a1/server.jar
-```
-1.15
-```
-wget https://launcher.mojang.com/v1/objects/e9f105b3c5c7e85c7b445249a93362a22f62442d/server.jar
+wget https://papermc.io/api/v1/paper/1.15.2/143/download -O server.jar
 ```
 1.14.4
 ```
-wget https://launcher.mojang.com/v1/objects/3dc3d84a581f14691199cf6831b71ed1296a9fdf/server.jar
+wget https://papermc.io/api/v1/paper/1.14.4/243/download -O server.jar
+```
+1.13.2
+```
+wget https://papermc.io/api/v1/paper/1.13.2/655/download -O server.jar
+```
+1.12.2
+```
+wget https://papermc.io/api/v1/paper/1.12.2/1618/download -O server.jar
 ```
 
 !!! information
-    Don't see the version you are looking for? you can grab the server jar from this [website](https://mcversions.net/)
+    Don't see the version you are looking for? you can grab the server jar from this [website](https://papermc.io/legacy)
 
 ## Running the server
 First, make sure you do have java installed by running `java` and make sure you have the server jar file by running `ls` and you should see `server.jar` or the file you downloaded, to run the server run the command below once.
@@ -72,12 +73,14 @@ After:
 
 !!! note
     To exit from nano use Ctrl + X and Y to save the edited text.
-Next you can run the same command again to start the server.
+Next, you can run the same command again to start the server.
 ```
 java -Xmx1024M -Xms1024M -jar server.jar nogui
 ```
-![MC_1](https://i.imgur.com/jBAx1GP.png)
-![MC_2](https://i.imgur.com/naswFjM.png)
+!!! Hint
+    server.jar might include numbering depending where you have downloaded your jar from, you can also increase the ram used by upping the Xmx and Xms flags.
+![MC_1](https://i.imgur.com/3TqN7J2.png)
+![MC_2](https://i.imgur.com/XCipNhG.png)
 
 ## Connecting to the server
 You should grab the IP of your server which can be found using the command below if you do not know it.
