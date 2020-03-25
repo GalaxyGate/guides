@@ -27,6 +27,20 @@ extra_javascript:
 
 nav:
 - Home: 'index.md'
+- Linux Basics:
+  - Creating Sudo User: 'Linux_Basics/create_sudo_user.md'
+  - Fix unable to resolve host: 'Linux_Basics/fix_unable_resolve_host.md'
 - Hosting:
     - Discord:
         - Python: 'discord/hosting_python.md'
+        - JavaScript: 'discord/hosting_discord_js.md'
+- Games:
+    - Minecraft Java:
+        - Paper: 'Games/Minecraft_Java/Paper.md'
+        - Vanilla: 'Games/Minecraft_Java/Vanilla.md'
+    - Minecraft Bedrock:
+        - Bedrock: 'Games/Minecraft_Bedrock/Bedrock.md'
+        - Pocketmine: 'Games/Minecraft_Bedrock/Pocketmine.md'
+- Security:
+    - Network:
+        - test: 'Security/index.md'
