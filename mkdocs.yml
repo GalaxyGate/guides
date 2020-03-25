@@ -34,3 +34,10 @@ nav:
     - Discord:
         - Python: 'discord/hosting_python.md'
         - JavaScript: 'discord/hosting_discord_js.md'
+- Games:
+    - Minecraft:
+        - Paper: 'Games/Minecraft/Paper.md'
+        - vanilla: 'Games/Minecraft/Vanilla.md'
+- Secruity:
+    - Network:
+        - test: 'Secruity/index.md'

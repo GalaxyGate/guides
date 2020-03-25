@@ -31,12 +31,18 @@ If the command above failed, you probably don't have Python installed on the ser
 
 You can run the commands below to install Python 3.7.
 ```bash
+sudo apt-get install software-properties-common
 sudo add-apt-repository ppa:deadsnakes/ppa
 sudo apt update
 sudo apt install python3.7
 ```
 
 !!! question "What do these commands do?"
+    `apt-get install software-properties-common`
+    <br/>
+    Adds `apt-repository` command which is used later on.
+    <br/>
+    <br/>
     `add-apt-repository ppa:deadsnakes/ppa`
     <br/>
     Adds the 'deadsnakes'' repository which hosts Python builds to your system's package manager.
