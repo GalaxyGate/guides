@@ -75,7 +75,10 @@ node filename.js // file name being the bot file
 ```
 ![node](https://i.imgur.com/Dc18xNa.gif)
 
-If everything went okay at this point of the guide you should notice that the bot should be online in your server, however, you should note that it is running on an SSH session which terminates itself when you end the SSH session, to prevent this we have listed a few ways to stop this from happening.
+If everything went okay this far, you're left with one issue.
+While the bot is online in your server, it's only running inside of the current SSH session.
+Once you end that session, the bot's process gets terminated with it.
+To prevent this from happening, here are a few different methods:
 
 To exit hit Control + C (Ctrl + c)
 
