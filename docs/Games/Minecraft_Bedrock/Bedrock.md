@@ -12,10 +12,11 @@ In this guide, you will be able to host a Bedrock Dedicated Minecraft server as 
 *If you do not know how to connect to your server I would recommend using an SSH client like [bitvise](https://www.bitvise.com/ssh-client-download) or [Putty](https://www.putty.org/) and ask for help in our [support server.](https://discord.gg/jcKEyxn)*
 
 ## Creating a user for Minecraft
-For security purposes, Minecraft should not be running under the root user. We will create a new system user and group with home directory /opt/Minecraft that will run the Minecraft server:
+For security purposes, Minecraft should not be running under the root user. We will create a new system user and group with home directory /opt/Minecraft that will run the Minecraft server and install unzip which is needed later.
 
 ```
 sudo useradd -r -m -U -d /opt/Minecraft -s /bin/bash Minecraft
+sudo apt install unzip screen -y
 ```
 We are not going to set a password for this user. This is a good security practice because this user will not be able to log in via SSH. To login to the Minecraft user, you’ll need to be logged in to the server as root or user with sudo privileges.
 
@@ -35,7 +36,7 @@ cd Bedrock
 ## Getting the files
 Install the zipped files required to host the server using the command provided below, the command will also unzip the files and install unzip which is required.
 ```
-sudo apt install unzip -y && wget https://minecraft.azureedge.net/bin-linux/bedrock-server-1.14.32.1.zip && unzip bedrock-server-1.14.32.1.zip && rm bedrock-server-1.14.32.1.zip
+wget https://minecraft.azureedge.net/bin-linux/bedrock-server-1.14.32.1.zip && unzip bedrock-server-1.14.32.1.zip && rm bedrock-server-1.14.32.1.zip
 ```
 
 ## Starting the server
@@ -56,13 +57,6 @@ dig +short myip.opendns.com @resolver1.opendns.com
 
 
 ## Keeping your server alive
-
-!!! Warning
-    First, we should exit from the Minecraft user so we can install any of the solutions below as the user does not have any root permissions.
-Run the command below to switch to root or the user you were logged in as.
-```
-exit
-```
 ### Screen
 
 Screen is one way of keeping your server running in the background without having to keep your SSH session open.
@@ -73,17 +67,13 @@ Screen is one way of keeping your server running in the background without havin
 To start your server with screen, first, make sure you have `screen` package installed.
 
 #### Installation
-You can install screen using the one-liner below:
+If `screen` is not installed then you can install screen using the one-liner below:
 ```bash
 sudo apt update && sudo apt install screen -y
 ```
+!!! warning
+    Only run if you do not have screen installed and make sure to use exit first to go back to being root after you have installed use `sudo su - minecraft` and proceed.
 #### Usage
-
-!!! Information
-    You will want to log back into your Minecraft user before executing any of the commands below.
-```
-sudo su - Minecraft
-```
 Install the required files.
 ```
 wget https://gist.githubusercontent.com/dragonblitz10/a7a0c8d52834fe6798924b7ce1c72e21/raw/2b6f88d31995a37f62641d591a9d39a218e6f78e/Server.sh -O Server.sh

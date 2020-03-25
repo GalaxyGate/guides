@@ -16,6 +16,7 @@ For security purposes, Minecraft should not be running under the root user. We w
 
 ```
 sudo useradd -r -m -U -d /opt/Minecraft -s /bin/bash Minecraft
+sudo apt install screen unzip -y
 ```
 We are not going to set a password for this user. This is a good security practice because this user will not be able to log in via SSH. To login to the Minecraft user, you’ll need to be logged in to the server as root or user with sudo privileges.
 
@@ -103,13 +104,6 @@ dig +short myip.opendns.com @resolver1.opendns.com
  ![MC_SERVER](https://i.imgur.com/Sv1gMft.png)
 
 ## Keeping your server alive
-
-!!! Warning
-    First, we should exit from the Minecraft user so we can install any of the solutions below as the user does not have any root permissions.
-Run the command below to switch to root or the user you were logged in as.
-```
-exit
-```
 ### Screen
 
 Screen is one way of keeping your server running in the background without having to keep your SSH session open.
@@ -124,14 +118,9 @@ You can install screen using the one-liner below:
 ```bash
 sudo apt update && sudo apt install screen -y
 ```
+!!! warning
+    Only run if you do not have screen installed and make sure to use exit first to go back to being root after you have installed use `sudo su - minecraft` and proceed.
 #### Usage
-
-!!! Information
-    You will want to log back into your Minecraft user before executing any of the commands below.
-```
-sudo su - Minecraft
-```
-
 You can then start your server by using the command below:
 ```bash
 screen -S Minecraft java -Xmx1024M -Xms1024M -jar server.jar nogui
