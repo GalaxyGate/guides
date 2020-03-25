@@ -28,8 +28,8 @@ sudo su - Minecraft
 ## Creating the Directory 
 If you plan to have multiple versions of Minecraft running I would recommend creating a folder for them to make sure the files do not conflict.
 ```
-mkdir Vanilla
-cd Vanilla
+mkdir Paper
+cd Paper
 ```
 
 ## Installing Java
@@ -132,9 +132,9 @@ sudo su - Minecraft
 
 You can then start your server by using the command below:
 ```bash
-screen -S Minecraft java -Xmx1024M -Xms1024M -jar server.jar nogui
+screen -S Paper java -Xmx1024M -Xms1024M -jar server.jar nogui
 ```
 This should create a session you can safely leave without fear of it shutting down when you leave, 
 You can leave the screen via `CTRL+AD` from this session so your Server is still online when you leave.
 
-You can re-attach to the running screen by running `screen -r Minecraft` and either issue commands or shutdown the server via `CTRL+C`.
+You can re-attach to the running screen by running `screen -r Paper` and either issue commands or shutdown the server via `CTRL+C`.
