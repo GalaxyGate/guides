@@ -41,6 +41,6 @@ nav:
     - Minecraft Bedrock:
         - Bedrock: 'Games/Minecraft_Bedrock/Bedrock.md'
         - Pocketmine: 'Games/Minecraft_Bedrock/Pocketmine.md'
-- Secruity:
+- Security:
     - Network:
-        - test: 'Secruity/index.md'
+        - test: 'Security/index.md'
