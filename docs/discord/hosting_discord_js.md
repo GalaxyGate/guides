@@ -17,10 +17,10 @@ In this guide, I am assuming that:
 
 ## Installation
 
-### NodeJS
+### Node.js
 
-For a JavaScript discord bot, you will need to have NodeJS and npm installed on the server.
-To install NodeJS & npm run the commands listed.
+For a JavaScript discord bot, you will need to have Node.js and npm installed on the server.
+To install Node.js & npm run the commands listed.
 You can choose which version to install if you have a preference however I recommend that you should choose v12.
 
 v10
@@ -28,21 +28,21 @@ v10
 sudo apt update
 sudo apt -y install curl dirmngr apt-transport-https lsb-release ca-certificates
 curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash –
-sudo apt -y install nodejs
+sudo apt -y install Node.js
 ```
 v12
 ```
 sudo apt update
 sudo apt -y install curl dirmngr apt-transport-https lsb-release ca-certificates
 curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
-sudo apt -y install nodejs
+sudo apt -y install Node.js
 ```
 v13
 ```bash
 sudo apt update
 sudo apt -y install curl dirmngr apt-transport-https lsb-release ca-certificates
 curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash –
-sudo apt -y install nodejs
+sudo apt -y install Node.js
 ```
 Verify that node is installed correctly.
 ```bash
@@ -75,7 +75,7 @@ node filename.js // file name being the bot file
 ```
 ![node](https://i.imgur.com/Dc18xNa.gif)
 
-If everything went okay at this point of the guide you should notice that the bot should be online in your server, however, you should note that it is running on an SSH session which kills itself when you end the SSH session, to prevent this we have listed a few ways to stop this from happening.
+If everything went okay at this point of the guide you should notice that the bot should be online in your server, however, you should note that it is running on an SSH session which terminates itself when you end the SSH session, to prevent this we have listed a few ways to stop this from happening.
 
 To exit hit Control + C (Ctrl + c)
 
@@ -189,7 +189,7 @@ sudo systemctl restart bot # Restarts the 'bot' service.
 
 ### PM2
 What is PM2?
-PM2 is a process manager for the JavaScript runtime NodeJS which can be used to keep node application alive after a killed SSH session. PM2 can easily start/stop/restart your bot as well as provide logging. 
+PM2 is a process manager for the JavaScript runtime Node.js which can be used to keep node application alive after a killed SSH session. PM2 can easily start/stop/restart your bot as well as provide logging. 
 
 !!! warning
     PM2 will restart when the bot crashes which can result in a boot loop.
