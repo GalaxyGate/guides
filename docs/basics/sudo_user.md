@@ -50,7 +50,17 @@ sudo ls /root
 Since only root can read that directory you would require to be either root or have sudo to access the directory.
 
 Response if you have sudo:
-![sudo response](https://i.imgur.com/UumT15w.png)
+```bash
+user@server:~$ sudo ls /root
+[sudo] password for user:
+
+file1 file2 fil3
+```
 
 Response if you don't have sudo:
-![permission denied sudo](https://i.imgur.com/90u5qng.png)
+```bash
+user@server:~$ sudo ls /root
+[sudo] password for user:
+
+user is not in the sudoers file. This incident will be reported.
+```

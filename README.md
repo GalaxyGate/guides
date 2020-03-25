@@ -9,8 +9,17 @@ We welcome all pull requests.
 
 This guide uses `MkDocs` and is written using Markdown.
 
-To edit it, you can clone this repository and start a live-reloading server with `mkdocs 
-serve`.
+Pre-Requisites:
+- python3
 
-All documents are inside the `docs/` folder and menu links are located on the `mkdocs.yml` 
-file.
+Install dependencies:
+```bash
+pip install mkdocs mkdocs-material pymdown-extensions pygments 
+```
+
+Start development server:
+````bash
+mkdocs serve
+````
+
+All documents are inside the `docs/` folder and menu links are located on the `mkdocs.yml` file.

@@ -4,8 +4,8 @@
 
 In this article you will learn:
 
-* What is needed to host a Python Bot.
-* How to make bot run after closing SSH session.
+* What is needed to host a discord.py Bot.
+* How to keep the bot running after closing the SSH session.
 
 In this article, we assume that:
 

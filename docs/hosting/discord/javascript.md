@@ -2,18 +2,18 @@
 
 ## Introduction
 
-In this guide you will learn:
+In this article you will learn:
 
-* How to host a Discord.js bot on a vps.
-* How to make bot stay online 24/7.
+* What is needed to host a Discord.js Bot.
+* How to keep the bot running after closing the SSH session.
 
-In this guide, I am assuming that:
+In this article, we assume that:
 
-* You have locally tested the bot and it works.
-* You know how to establish an SSH connection or use an SSH client.
-* You know how to use FTP/SFTP to upload files or use a deployment method like GitHub.
+* You are using discord.js as your library
+* You have confirmed your bot is working locally.
+* Know how to establish an SSH connection.
+* Know how to use FTP/SFTP to upload files.
 * You have a Linux VPS (Debian/Ubuntu).
-* You are logged in as root or have a user that can use sudo.
 
 ## Installation
 
