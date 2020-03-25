@@ -37,7 +37,10 @@ nav:
 - Games:
     - Minecraft Java:
         - Paper: 'Games/Minecraft_Java/Paper.md'
-        - vanilla: 'Games/Minecraft_Java/Vanilla.md'
+        - Vanilla: 'Games/Minecraft_Java/Vanilla.md'
+    - Minecraft Bedrock:
+        - Bedrock: 'Games/Minecraft_Bedrock/Bedrock.md'
+        - Pocketmine: 'Games/Minecraft_Bedrock/Pocketmine.md'
 - Secruity:
     - Network:
         - test: 'Secruity/index.md'

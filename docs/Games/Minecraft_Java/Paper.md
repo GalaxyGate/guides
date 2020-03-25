@@ -1,7 +1,7 @@
 # Hosting a Paper Minecraft server
 
 ## Introduction
-In this guide, you will be able to host a Paper Minecraft server as well as keeping it alive without having to be logged in all the time. Before you start, make sure you do meet the requirements and have a basic understanding of Linux, if you have issues or are stuck on a step you can ask for help in our [support server.](https://discord.gg/jcKEyxn)
+In this guide, you will be able to host a Paper Minecraft server as well as keeping it alive without having to be logged in all the time. Before you start, make sure you meet the requirements and have a basic understanding of Linux, if you have issues or are stuck on a step you can ask for help in our [support server.](https://discord.gg/jcKEyxn)
 
 ## Requirements 
 * You have a Linux VPS (Debian/Ubuntu).
@@ -21,10 +21,19 @@ We are not going to set a password for this user. This is a good security practi
 
 Before starting with the installation process, make sure you switch to the Minecraft user.
 
-```sudo su - Minecraft```
+```
+sudo su - Minecraft
+```
+
+## Creating the Directory 
+If you plan to have multiple versions of Minecraft running I would recommend creating a folder for them to make sure the files do not conflict.
+```
+mkdir Vanilla
+cd Vanilla
+```
 
 ## Installing Java
-Run the commands below on the Minecraft user from above.
+Run the commands below on the Minecraft user we created above.
 ```
 curl -sL https://github.com/shyiko/jabba/raw/master/install.sh | bash && . ~/.jabba/jabba.sh
 jabba install openjdk@1.14.0
@@ -85,15 +94,24 @@ java -Xmx1024M -Xms1024M -jar server.jar nogui
 ## Connecting to the server
 You should grab the IP of your server which can be found using the command below if you do not know it.
 
-```dig +short myip.opendns.com @resolver1.opendns.com```
+```
+dig +short myip.opendns.com @resolver1.opendns.com
+```
  Copy the IP and open Minecraft up, go to servers and click add a server and under `Server Address` put the server's IP in and click Done.
  ![MC_SERVER](https://i.imgur.com/Sv1gMft.png)
 
 ## Keeping your server alive
 
+!!! Warning
+    First, we should exit from the Minecraft user so we can install any of the solutions below as the user does not have any root permissions.
+Run the command below to switch to root or the user you were logged in as.
+```
+exit
+```
 ### Screen
 
 Screen is one way of keeping your server running in the background without having to keep your SSH session open.
+
 !!! warning
     `screen` does not boot on load or write logs to the disk automatically, reboots would kill the screen due to only being a virtual session.
 
@@ -105,6 +123,12 @@ You can install screen using the one-liner below:
 sudo apt update && sudo apt install screen -y
 ```
 #### Usage
+
+!!! Information
+    You will want to log back into your Minecraft user before executing any of the commands below.
+```
+sudo su - Minecraft
+```
 
 You can then start your server by using the command below:
 ```bash
