@@ -1,7 +1,7 @@
-# Hosting a vanilla minecraft server
+# Hosting a vanilla Minecraft server
 
 ## Introduction
-In this guide you will be able to host a minecraft server as well as keeping it alive without having to be logged in all the time. Before you start, make sure you do meet the requirements and have a basic understanding of linux, if you have issues or are stuck on a step you can ask for help in our [support server.](https://discord.gg/jcKEyxn)
+In this guide, you will be able to host a Minecraft server as well as keeping it alive without having to be logged in all the time. Before you start, make sure you do meet the requirements and have a basic understanding of Linux, if you have issues or are stuck on a step you can ask for help in our [support server.](https://discord.gg/jcKEyxn)
 
 ## Requirements 
 * You have a Linux VPS (Debian/Ubuntu).
@@ -9,19 +9,19 @@ In this guide you will be able to host a minecraft server as well as keeping it 
 * You know how to establish an SSH connection or use an SSH client.
 <br/>
 
-*If you do not know how to connect to your server I would recommend using a SSH client like [bitvise](https://www.bitvise.com/ssh-client-download) or [Putty](https://www.putty.org/) and ask for help in our [support server.](https://discord.gg/jcKEyxn)*
+*If you do not know how to connect to your server I would recommend using an SSH client like [bitvise](https://www.bitvise.com/ssh-client-download) or [Putty](https://www.putty.org/) and ask for help in our [support server.](https://discord.gg/jcKEyxn)*
 
-## Creating a user for minecraft
-For security purposes, Minecraft should not be ran under the root user. We will create a new system user and group with home directory /opt/minecraft that will run the Minecraft server:
+## Creating a user for Minecraft
+For security purposes, Minecraft should not be running under the root user. We will create a new system user and group with home directory /opt/Minecraft that will run the Minecraft server:
 
 ```
-sudo useradd -r -m -U -d /opt/minecraft -s /bin/bash minecraft
+sudo useradd -r -m -U -d /opt/Minecraft -s /bin/bash Minecraft
 ```
-We are not going to set a password for this user. This is a good security practice because this user will not be able to login via SSH. To login to the minecraft user you’ll need to be logged in to the server as root or user with sudo privileges.
+We are not going to set a password for this user. This is a good security practice because this user will not be able to login via SSH. To login to the Minecraft user, you’ll need to be logged in to the server as root or user with sudo privileges.
 
-Before starting with the installation process, make sure you switch to minecraft user.
+Before starting with the installation process, make sure you switch to Minecraft user.
 
-```sudo su - minecraft```
+```sudo su - Minecraft```
 
 ## Installing Java
 Run the commands below on the Minecraft user from above.
@@ -32,7 +32,7 @@ jabba alias default openjdk@1.14.0
 ```
 
 ## Getting the server jar
-Please download one of the server Jars from below. Currently 1.15.2 is the latest server jar.
+Please download one of the server Jars from below. Currently, 1.15.2 is the latest server jar.
 1.15.2
 ```
 wget https://launcher.mojang.com/v1/objects/bb2b6b1aefcd70dfd1892149ac3a215f6c636b07/server.jar
@@ -50,15 +50,15 @@ wget https://launcher.mojang.com/v1/objects/e9f105b3c5c7e85c7b445249a93362a22f62
 wget https://launcher.mojang.com/v1/objects/3dc3d84a581f14691199cf6831b71ed1296a9fdf/server.jar
 ```
 
-!!! infomation
-    Dont see the version you are looking for? you can grab the server jar from this [website](https://mcversions.net/)
+!!! information
+    Don't see the version you are looking for? you can grab the server jar from this [website](https://mcversions.net/)
 
 ## Running the server
-First make sure you do have java installed by running `java` and make sure you have the server jar file by running `ls` and you should see `server.jar` or the file you downloaded, to run the server run the command below once.
+First, make sure you do have java installed by running `java` and make sure you have the server jar file by running `ls` and you should see `server.jar` or the file you downloaded, to run the server run the command below once.
 ```
 java -Xmx1024M -Xms1024M -jar server.jar nogui
 ```
-You will get an message asking you to accept the EULA.
+You will get a message asking you to accept the EULA.
 ![EULA](https://i.imgur.com/HgyNGLQ.png)
 
 To accept the EULA just edit eula.txt and change false to true.
@@ -83,7 +83,7 @@ java -Xmx1024M -Xms1024M -jar server.jar nogui
 You should grab the IP of your server which can be found using the command below if you do not know it.
 
 ```dig +short myip.opendns.com @resolver1.opendns.com```
- Copy the IP and open minecraft up, go to servers and click add a server and under `Server Address` put the server's IP in and click Done.
+ Copy the IP and open Minecraft up, go to servers and click add a server and under `Server Address` put the server's IP in and click Done.
  ![MC_SERVER](https://i.imgur.com/Sv1gMft.png)
 
 ## Keeping your server alive
