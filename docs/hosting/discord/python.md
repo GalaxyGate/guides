@@ -93,9 +93,13 @@ After=multi-user.target
 
 [Service]
 WorkingDirectory=/home/my_username/my_bot_name
-User=my_username # It's discouraged to run your bot as root
-ExecStart=/bin/bash -c "source venv/bin/activate && python bot.py" # Activate the virtual env and start the bot within it
-Restart=always # Restarts the bot regardless of exit code
+# This is where your bot's code lies
+User=my_username 
+# It's discouraged to run your bot as root
+ExecStart=/bin/bash -c "source venv/bin/activate && python bot.py" 
+# Activate the virtual env and start the bot within it
+Restart=always 
+# Restarts the bot regardless of exit code
 
 [Install]
 WantedBy=multi-user.target
