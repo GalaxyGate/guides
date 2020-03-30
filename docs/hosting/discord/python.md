@@ -103,7 +103,7 @@ $ nano /etc/systemd/system/my_bot.service
     Replace `nano` with the editor you choose, otherwise leave it be.
 
 We will just use this boilerplate for our bot, make sure you change this to
-the appropiate values.
+the appropriate values.
 
 ```ini
 [Unit]
