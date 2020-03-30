@@ -100,8 +100,8 @@ To create and start editing a service file called `my_bot`, you would do
 $ nano /etc/systemd/system/my_bot.service
 ```
 !!! note
-    Replace `nano` with the editor you choose, otherwise leave it blank.
-    
+    Replace `nano` with the editor you choose, otherwise leave it be.
+
 We will just use this boilerplate for our bot, make sure you change this to
 the appropiate values.
 
@@ -128,6 +128,9 @@ WantedBy=multi-user.target
 
 !!! note
     If you don't use virtual environments, then you can just reassign the `ExecStart` part to `ExecStart=/usr/bin/python3.7 bot.py`
+
+To save these changes in `nano` you would simply type CTRL-X to save your change, `y` to confirm the change, and `Enter` to write that change
+to `/etc/systemd/system/my_bot.service`
 
 
 Now you would enter this command to tell systemd to see your newly created or changed
