@@ -86,7 +86,7 @@ $ python bot.py
     Encountering a `ModuleNotFound: No module named 'discord'` when trying to run the command above? Chances are is
     you didn't activate the virtual environment or install the dependency.
 
-Now you can close your SSH client, but chances are is that your bot will stop as well which can be frustrating. Luckily, you can solve this by
+Now you can close your SSH client, but chances are is that your bot will stop which can be frustrating. Luckily, you can solve this by
 using a process manager such as `systemd` or a terminal multiplexer like `screen` to keep the session alive when you close your SSH connection. Read further down to learn how to utilize these programs.
 
 
