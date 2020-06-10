@@ -34,9 +34,14 @@ Is the information correct? [Y/n]
 !!! warning
     Make sure to type in `Y` and click enter otherwise you will have to redo the user information prompt!
 ## Granting user sudo
-Now we have added a user that you can log in into via ssh, it is now time for us to allow the user to use sudo. We will be using the `usermod` command to add `username` to the `sudo` group.
+Now we have added a user that you can log in into via ssh, it is now time for us to allow the user to use sudo. We will be using the `usermod` command to add `username` to the `sudo` or `wheel` group.
+### Debian Based (Debian, Ubuntu)
 ```bash
 usermod -aG sudo username
+```
+### RHEL Based (RHEL, CentOS)
+```bash
+usermod -aG wheel username
 ```
 Now we will test that if the user we have added is allowed to use sudo or not.
 Use the su command to log in to the username you have selected.
