@@ -10,11 +10,20 @@ In this article you will learn:
 In this article, we assume that:
 
 * You are using discord.js as your library
-* You have confirmed your bot is working locally.
-* Know how to establish an SSH connection.
-* Know how to use FTP/SFTP to upload files.
+* You have confirmed that your bot is working locally.
+* You know how to establish an SSH connection.
+* You know how to use FTP/SFTP to upload files.
 * You have a Linux VPS (Debian/Ubuntu).
 
+*If you do not know how to connect to your server I would recommend using an SSH client like [bitvise](https://www.bitvise.com/ssh-client-download) or [Putty](https://www.putty.org/) and ask for help in our [support server.](https://discord.gg/jcKEyxn)*
+
+## Upgrading packages 
+To ensure we have a smoother experince we should install some packages which includes some commands we may or may not use in the guide please either make sure you are executing these as root/a user with sudo.
+```
+apt update && apt upgrade -y 
+apt install sudo screen curl unzip -y 
+apt -y install curl dirmngr apt-transport-https lsb-release ca-certificates 
+```
 ## Installation
 
 ### Node.js
@@ -25,54 +34,56 @@ You can choose which version to install if you have a preference however I recom
 
 v10
 ```bash
-sudo apt update
-sudo apt -y install curl dirmngr apt-transport-https lsb-release ca-certificates
 curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash –
-sudo apt -y install Node.js
+sudo apt -y install nodejs
 ```
 v12
 ```
-sudo apt update
-sudo apt -y install curl dirmngr apt-transport-https lsb-release ca-certificates
 curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
-sudo apt -y install Node.js
+sudo apt -y install nodejs
 ```
 v13
 ```bash
-sudo apt update
-sudo apt -y install curl dirmngr apt-transport-https lsb-release ca-certificates
 curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash –
-sudo apt -y install Node.js
+sudo apt -y install nodejs
+```
+V14
+```bash
+curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash –
+sudo apt -y install nodejs
 ```
 Verify that node is installed correctly.
 ```bash
 node -v
 npm -v
 ```
-![Node Version](https://i.imgur.com/T8u5lvN.png)
+![Node Version](https://i.imgur.com/6qEasvS.png)
 
 If you do not get a response from above or something went wrong, please take a screenshot of what went wrong and ask for help in our [support server.](https://discord.gg/jcKEyxn) 
 
+
 ### Getting your bot onto the VPS
-Assuming you have an SSH client with SFTP it should be easy enough to drag a zipped copy of your bot without the node_modules folder and unzip it via terminal.
+First, you should zip your bot folder in preparation of what you should do next after you finish zipping your bot files with an SFTP client of your choice, you should upload the zipped file which should contain all your files to the server, you should also remember the name of the zipped file.
+
+!!! Note
+    Don't have an SFTP client? you can download one [Here.](https://filezilla-project.org/download.php?type=client)
+
+
 ```
-cd <bot folder name> // if you haven't already!
-sudo apt install unzip -y
-unzip filename.zip
+unzip bot.zip
+cd botName
 npm install 
 ```
-![unzipping](https://i.imgur.com/qZQP3nL.gif)
+![unzipping](https://i.imgur.com/kRkvLX1.gif)
 ### Discord.JS
 
-You can now start your bot using either:
+You can now start your bot using
 ```bash
-node .  // if you set the main correctly in package.json
+node filename.js 
 ```
-OR 
-```bash
-node filename.js // file name being the bot file
-```
-![node](https://i.imgur.com/Dc18xNa.gif)
+!!! Note
+    the filename would be the main node file e.g `index.js`, `bot.js` or `Botname.js`
+![node](https://i.imgur.com/w42z7b8.gif)
 
 
 To exit hit Control + C (Ctrl + c)
@@ -121,7 +132,7 @@ screen -S <BotName> node x
 
 *hint:* Replace x with the correct filename for your bot, for example:
 ```bash
-screen -S aero index.js
+screen -S aero node index.js
 ```
 This should create a session you can safely leave without fear of it shutting down when you leave, 
 You can leave the screen via `CTRL+AD` from this session so your bot remains working after you leave.
@@ -138,15 +149,15 @@ You can also use systemd as the service manager for your bot.
 Systemd requires a service description file to be created.
 
 You can create it using your favorite editor and save it to `/lib/systemd/system/bot.service`:
-```properties
+```ini
 [Unit]
-Description=Bot
+Description=My Node JS Bot
 After=multi-user.target
 [Service]
 WorkingDirectory=/root/botFolder
 User=root
-ExecStart=command --no-prompt
-Type=idle
+ExecStart=/usr/bin/node .
+Type=simple
 Restart=always
 RestartSec=15
 
@@ -158,15 +169,15 @@ You need to replace the proper path for the bot folder as well as the startup co
 
 Assuming the bot files are on `/root/bot` the file will look like this for a discord.js bot:
 
-```properties
+```ini
 [Unit]
-Description=Bot
+Description=My wonderful bot
 After=multi-user.target
 [Service]
 WorkingDirectory=/root/bot
 User=root
-ExecStart=/usr/bin/node /root/bot/bot.js 
-Type=idle
+ExecStart=/usr/bin/node bot.js 
+Type=simple
 Restart=always
 RestartSec=15
 
@@ -222,3 +233,11 @@ pm2 logs 0
 - PM2 has a web app which can be found [here.](https://pm2.keymetrics.io/)
 - `pm2 ls` will show all the running node instances.
 - PM2 commands can be found [here](https://devhints.io/pm2)
+
+## Resources
+* [discord.js Docs](https://discord.js.org/#/docs/main/master/general/welcome)
+* [discord.js GitHub](https://github.com/discordjs/discord.js)
+* [discord.js Guide](https://discordjs.guide/)
+* [discord.js Discord](https://discord.gg/bRCvFy9)
+* [discord.js Frameworks](https://github.com/1Computer1/discord.js-frameworks-comparison)
+* [PM2 Docs](https://pm2.keymetrics.io/docs/usage/quick-start/)

@@ -9,8 +9,8 @@ In this article you will learn:
 
 In this article, we assume that:
 
-* You are using discord.py as your library
-* You already have your bot's files uploaded to the server
+* You are using discord.py as your library.
+* You already have your bot's files uploaded to the server.
 * You have confirmed your bot is working locally.
 * Know how to establish an SSH connection.
 * You have a Linux VPS (Debian/Ubuntu).
@@ -26,6 +26,7 @@ To host a bot using discord.py on a server, you must install Python. If you're u
 
 For Ubuntu, you would do
 ```sh
+$ sudo apt-get install software-properties-common
 $ sudo add-apt-repository ppa:deadsnakes/ppa
 $ sudo apt update
 $ sudo apt install python3.7 python3.7-venv python3-pip
@@ -47,7 +48,7 @@ Change to the path of your bot.
 $ cd /the/path/to/my/bots/code
 ```
 
-Recommended: Create a virtual enviroment and activate it
+Recommended: Create a virtual enviroment and activate it.
 ```
 $ python3.7 -m venv venv
 $ source venv/bin/activate
@@ -56,17 +57,17 @@ $ source venv/bin/activate
     A virtual environment, or most commonly referred to as a venv, is a isolated environment for projects so
     you don't have to worry about polluting the global namespace. See the [official documentation](https://docs.python.org/3/library/venv.html#creating-virtual-environments) for more information.
 
-Install the `discord.py` package
+Install the `discord.py` package.
 
 ```
 $ pip install -U discord.py
 ```
 
 !!! note
-    If you use discord.py's voice features, then i would suggest appending `[voice]` at the end of the command
+    If you use discord.py's voice features, then i would suggest appending `[voice]` at the end of the command.
 
 !!! note
-    To install from a `requirements.txt` file, simply run `pip install -Ur requirements.txt` instead
+    To install from a `requirements.txt` file, simply run `pip install -Ur requirements.txt` instead.
 
 
 ## Running your bot
@@ -229,3 +230,8 @@ equity@server:~$
 !!! note
     The `(Detached)` on the far right means we aren't in the virtual session, otherwise it would
     be `(Attached)`
+
+## Resources
+* [discord.py Docs](https://discordpy.readthedocs.io/en/latest/)
+* [discord.py GitHub](https://github.com/Rapptz/discord.py)
+* [discord.py Discord](https://discord.gg/r3sSKJJ)

@@ -11,12 +11,21 @@ In this guide, you will be able to host a Paper Minecraft server as well as keep
 
 *If you do not know how to connect to your server I would recommend using an SSH client like [bitvise](https://www.bitvise.com/ssh-client-download) or [Putty](https://www.putty.org/) and ask for help in our [support server.](https://discord.gg/jcKEyxn)*
 
+## Installing required packages
+I recommend you should be logged in as root before executing these commands to ensure everything goes smoothly.
+
+```
+apt update && apt upgrade -y 
+apt install sudo screen unzip curl -y 
+```
+!!! warning 
+    You may get a popup like the one below, use the arrow key to click yes to proceed.
+![update_Warning](https://i.imgur.com/IhHbY3a.png)
 ## Creating a user for Minecraft
 For security purposes, Minecraft should not be running under the root user. We will create a new system user and group with home directory /opt/Minecraft that will run the Minecraft server:
 
 ```
 sudo useradd -r -m -U -d /opt/Minecraft -s /bin/bash Minecraft
-sudo apt install screen unzip -y
 ```
 We are not going to set a password for this user. This is a good security practice because this user will not be able to log in via SSH. To login to the Minecraft user, you’ll need to be logged in to the server as root or user with sudo privileges.
 
@@ -43,7 +52,12 @@ jabba alias default openjdk@1.14.0
 !!! Information 
     Run `jabba` to see if was installed correctly. 
 ## Getting the server jar
-Please download one of the server Jars from below. Currently, 1.15.2 is the latest version.
+Please download one of the server Jars from below. Currently, 1.16 is the latest server jar.
+
+1.16
+```
+wget https://papermc.io/ci/job/Paper-1.16/lastStableBuild/artifact/paperclip.jar -O server.jar
+```
 1.15.2
 ```
 wget https://papermc.io/api/v1/paper/1.15.2/143/download -O server.jar
@@ -70,16 +84,16 @@ First, make sure you do have java installed by running `java` and make sure you 
 java -Xmx1024M -Xms1024M -jar server.jar nogui
 ```
 You will get a message asking you to accept the EULA.
-![EULA](https://i.imgur.com/HgyNGLQ.png)
+![EULA](https://i.imgur.com/SIPYpko.png)
 
 To accept the EULA just edit eula.txt and change false to true.
 ```
 nano eula.txt
 ```
 Before:
-![EULA_file](https://i.imgur.com/8EST1o0.png)
+![EULA_file](https://i.imgur.com/wUfBhXH.png)
 After:
-![EULA_TRUE](https://i.imgur.com/vwia9Bo.png)
+![EULA_TRUE](https://i.imgur.com/pWjpex9.png)
 
 !!! note
     To exit from nano use Ctrl + X and Y to save the edited text.
@@ -89,8 +103,7 @@ java -Xmx1024M -Xms1024M -jar server.jar nogui
 ```
 !!! Hint
     server.jar might include numbering depending where you have downloaded your jar from, you can also increase the ram used by upping the Xmx and Xms flags.
-![MC_1](https://i.imgur.com/3TqN7J2.png)
-![MC_2](https://i.imgur.com/XCipNhG.png)
+![MC_1](https://i.imgur.com/x1CIPXO.png)
 
 ## Connecting to the server
 You should grab the IP of your server which can be found using the command below if you do not know it.
@@ -98,8 +111,12 @@ You should grab the IP of your server which can be found using the command below
 ```
 dig +short myip.opendns.com @resolver1.opendns.com
 ```
+!!! Note
+    If the command above fails, try this command and copy the output as that is the IP of your server.
+
+    ```curl icanhazip.com```
  Copy the IP and open Minecraft up, go to servers and click add a server and under `Server Address` put the server's IP in and click Done.
- ![MC_SERVER](https://i.imgur.com/Sv1gMft.png)
+ ![MC_SERVER](https://i.imgur.com/43rB4i1.png)
 
 ## Keeping your server alive
 ### Screen
@@ -112,12 +129,12 @@ Screen is one way of keeping your server running in the background without havin
 To start your server with screen, first, make sure you have `screen` package installed.
 
 #### Installation
-You can install screen using the one-liner below:
+You should've installed screen from the start of the guide. In the eventuality that you do not have `screen package` installed, please use the command below and make sure you're using root or sudo. You can install screen using the one-liner below:
 ```bash
 sudo apt update && sudo apt install screen -y
 ```
 !!! warning
-    Only run if you do not have screen installed and make sure to use exit first to go back to being root after you have installed use `sudo su - minecraft` and proceed.
+    Make sure you are using root if you are still on the Minecraft account use `exit`, then execute the commands after you are done you should use the command listed to switch back to the Minecraft account `sudo su - Minecraft`.
 #### Usage
 You can then start your server by using the command below:
 ```bash
@@ -127,3 +144,69 @@ This should create a session you can safely leave without fear of it shutting do
 You can leave the screen via `CTRL+AD` from this session so your Server is still online when you leave.
 
 You can re-attach to the running screen by running `screen -r Paper` and either issue commands or shutdown the server via `CTRL+C`.
+### Systemd
+Systemd can be an easy way of keeping your Minecraft server up, setting a service file for Minecraft should be easy and quick if you follow closely, first you should switch to root for this by running the command below.
+#### Installation
+```
+exit
+```
+Once you are root we will start by creating a service file called `MinecraftPaper.service` in `/etc/systemd/system/`.
+```
+nano /etc/systemd/system/MinecraftPaper.service
+```
+Next, a screen like this will show up, you will fill it up with the config provided below.
+![systemd_blank](https://i.imgur.com/8rrRfRr.png)
+Use this config.
+```ini
+[Unit]
+Description=Paper Minecraft server
+After=network.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=Minecraft
+WorkingDirectory=/opt/Minecraft/Paper/
+ExecStart=/opt/Minecraft/.jabba/jdk/openjdk@1.14.0/bin/java -Xmx1024M -Xms1024M -jar server.jar nogui
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+```
+![completed_systemd](https://i.imgur.com/9Er7a4X.png)
+
+!!! Hint
+    To exit out of nano, use Ctrl + X and hit Y
+
+Run the commands below to test and start the server
+```
+systemctl daemon-reload 
+systemctl start MinecraftPaper.service 
+systemctl status MinecraftPaper.service
+systemctl enable MinecraftPaper.service
+
+```
+#### Usage
+Here are some commands that will help you effectively manage the service.
+Start service:
+```
+systemctl start MinecraftPaper.service 
+```
+Restart service:
+```
+systemctl restart MinecraftPaper.service 
+```
+Status of service:
+```
+systemctl status MinecraftPaper.service 
+```
+Stop service:
+```
+systemctl stop MinecraftPaper.service 
+```
+## Resources
+* [PaperMC Documentation](https://paper.readthedocs.io/en/latest/)<br>
+* [PaperMC Github](https://github.com/PaperMC)<br>
+* [Discord](https://discord.gg/papermc)<br>
+* [Plugin repository](https://dev.bukkit.org/bukkit-plugins)

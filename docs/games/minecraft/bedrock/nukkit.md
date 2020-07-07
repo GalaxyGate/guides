@@ -1,7 +1,7 @@
-# Hosting a PocketMine-MP Server
+# Hosting a Nukkit Server
 
 ## Introduction
-In this guide, you will be able to host a PocketMine-MP Minecraft server as well as keeping it alive without having to be logged in all the time. Before you start, make sure you meet the requirements and have a basic understanding of Linux, if you have issues or are stuck on a step you can ask for help in our [support server.](https://discord.gg/jcKEyxn)
+In this guide, you will be able to host a Nukkit Minecraft server as well as keeping it alive without having to be logged in all the time. Before you start, make sure you meet the requirements and have a basic understanding of Linux, if you have issues or are stuck on a step you can ask for help in our [support server.](https://discord.gg/jcKEyxn)
 
 ## Requirements 
 * You have a Linux VPS (Debian/Ubuntu).
@@ -23,11 +23,12 @@ apt install sudo screen unzip curl -y
 ![update_Warning](https://i.imgur.com/IhHbY3a.png)
 
 ## Creating a user for Minecraft
-For security purposes, Minecraft should not be running under the root user. We will create a new system user and group with home directory /opt/Minecraft that will run the Minecraft server:
+For security purposes, Minecraft should not be running under the root user. We will create a new system user and group with home directory /opt/Minecraft that will run the Minecraft server and install unzip which is needed later.
 
 ```
 sudo useradd -r -m -U -d /opt/Minecraft -s /bin/bash Minecraft
 ```
+
 We are not going to set a password for this user. This is a good security practice because this user will not be able to log in via SSH. To login to the Minecraft user, you’ll need to be logged in to the server as root or user with sudo privileges.
 
 Before starting with the installation process, make sure you switch to the Minecraft user.
@@ -35,33 +36,46 @@ Before starting with the installation process, make sure you switch to the Minec
 ```
 sudo su - Minecraft
 ```
+
 ## Creating the Directory 
 If you plan to have multiple versions of Minecraft running I would recommend creating a folder for them to make sure the files do not conflict.
 ```
-mkdir PMMP
-cd PMMP
+mkdir Nukkit
+cd Nukkit
+```
+## Installing Java
+Run the commands below on the Minecraft user we created above.
+```
+curl -sL https://github.com/shyiko/jabba/raw/master/install.sh | bash && . ~/.jabba/jabba.sh
+jabba install openjdk@1.14.0
+jabba alias default openjdk@1.14.0
 ```
 
-## Using the installer
-The PocketMine-MP team has kindly made a script that will automatically install the server for you.
-```
-curl -sL https://get.pmmp.io | bash -s -
-```
-![good_PMMP_install](https://i.imgur.com/2BKWzm6.png)
+!!! Information 
+    Run `jabba` to see if was installed correctly. 
 
-## Starting the server
-Execute the command below in the same directory you ran the installer script in.
+## Getting the server jar
+Please download the server jar from below.
 ```
-./start.sh
+wget https://ci.nukkitx.com/job/NukkitX/job/Nukkit/job/master/lastSuccessfulBuild/artifact/target/nukkit-1.0-SNAPSHOT.jar/ -O Nukkit-server.jar
 ```
-This will ask you to start configuring your server which you should fill in yourselves.
-![config_start](https://i.imgur.com/axgqPxc.png)
-![license](https://i.imgur.com/UkjrQRc.png)
+!!! information
+    Don't see the version you are looking for? you can grab the server jar from this [website](https://ci.nukkitx.com/job/NukkitX/job/Nukkit/job/master/)
+    
+## Running the server
+First, make sure you do have java installed by running `java` and make sure you have the server jar file by running `ls` and you should see `server.jar` or the file you downloaded, to run the server run the command below once.
+```
+java -Xmx1024M -Xms1024M -jar Nukkit-server.jar nogui
+```
+!!! Hint
+    You will be asked to choose a language when you first run the server, you can also increase the ram used by upping the Xmx and Xms flags.
+![server_lang](https://i.imgur.com/mzQmeL1.png)
 
-!!! Warning
-    You should accept the license.
+![Nukkit_start](https://i.imgur.com/H1lRBpH.png)
+
 ## Connecting to the server
-The server IP should be provided after you finish the setup however In the eventuality that you do not have the IP you can still use the commands listed below to find your IP.
+You should grab the IP of your server which can be found using the command below if you do not know it.
+
 ```
 dig +short myip.opendns.com @resolver1.opendns.com
 ```
@@ -72,7 +86,8 @@ dig +short myip.opendns.com @resolver1.opendns.com
  Copy the IP and open Minecraft up, go to servers and click add a server and under `Server Address` put the server's IP in and click Done.
  ![MC_SERVER](https://i.imgur.com/2c5u5oa.png)
 
- ## Keeping your server alive
+
+## Keeping your server alive
 ### Screen
 
 Screen is one way of keeping your server running in the background without having to keep your SSH session open.
@@ -92,44 +107,43 @@ sudo apt update && sudo apt install screen -y
 #### Usage
 You can then start your server by using the command below:
 ```bash
-screen -S PMMP ./start.sh
+screen -S Paper java -Xmx1024M -Xms1024M -jar Nukkit-server.jar nogui
 ```
-This should create a session you can safely leave without fear of it shutting down when you leave. 
+This should create a session you can safely leave without fear of it shutting down when you leave, 
 You can leave the screen via `CTRL+AD` from this session so your Server is still online when you leave.
 
-You can re-attach to the running screen by running `screen -r PMMP` and either issue commands or shutdown the server via `CTRL+C`.
-
+You can re-attach to the running screen by running `screen -r Paper` and either issue commands or shutdown the server via `CTRL+C`.
 ### Systemd
 Systemd can be an easy way of keeping your Minecraft server up, setting a service file for Minecraft should be easy and quick if you follow closely, first you should switch to root for this by running the command below.
 #### Installation
 ```
 exit
 ```
-Once you are root we will start by creating a service file called `MinecraftPMMP.service` in `/etc/systemd/system/`.
+Once you are root we will start by creating a service file called `MinecraftNukkit.service` in `/etc/systemd/system/`.
 ```
-nano /etc/systemd/system/MinecraftPMMP.service
+nano /etc/systemd/system/MinecraftNukkit.service
 ```
 Next, a screen like this will show up, you will fill it up with the config provided below.
-![systemd_blank](https://i.imgur.com/nVeERc6.png)
+![systemd_blank](https://i.imgur.com/Kka7JVw.png)
 Use this config.
 ```ini
 [Unit]
-Description=PocketMine-MP Minecraft server
+Description=Nukkit Minecraft server
 After=network.target
 Wants=network-online.target
 
 [Service]
 Type=simple
 User=Minecraft
-WorkingDirectory=/opt/Minecraft/PMMP/
-ExecStart=/bin/bash start.sh
+WorkingDirectory=/opt/Minecraft/Nukkit/
+ExecStart=/opt/Minecraft/.jabba/jdk/openjdk@1.14.0/bin/java -Xmx1024M -Xms1024M -jar Nukkit-server.jar nogui
 Restart=always
 RestartSec=10
 
 [Install]
 WantedBy=multi-user.target
 ```
-![completed_systemd](https://i.imgur.com/xgvEKA8.png)
+![completed_systemd](https://i.imgur.com/7xoxTh3.png)
 
 !!! Hint
     To exit out of nano, use Ctrl + X and hit Y
@@ -137,34 +151,32 @@ WantedBy=multi-user.target
 Run the commands below to test and start the server
 ```
 systemctl daemon-reload 
-systemctl start MinecraftPMMP.service 
-systemctl status MinecraftPMMP.service
-systemctl enable MinecraftPMMP.service
+systemctl start MinecraftNukkit.service 
+systemctl status MinecraftNukkit.service
+systemctl enable MinecraftNukkit.service
+
 ```
 #### Usage
 Here are some commands that will help you effectively manage the service.
 Start service:
 ```
-systemctl start MinecraftPMMP.service 
+systemctl start MinecraftNukkit.service 
 ```
 Restart service:
 ```
-systemctl restart MinecraftPMMP.service 
+systemctl restart MinecraftNukkit.service 
 ```
 Status of service:
 ```
-systemctl status MinecraftPMMP.service 
+systemctl status MinecraftNukkit.service 
 ```
 Stop service:
 ```
-systemctl stop MinecraftPMMP.service 
+systemctl stop MinecraftNukkit.service 
 ```
-
 ## Resources
-* [PocketMine-MP Documentation](https://pmmp.readthedocs.io/en/rtfd/)<br>
-* [PocketMine-MP Github](https://github.com/pmmp/PocketMine-MP)<br>
-* [Discord](https://discord.gg/bmSAZBG)<br>
-* [Forums](https://forums.pmmp.io/)<br>
-* [StackOverFlow](https://stackoverflow.com/tags/pocketmine)<br>
-* [Docker Image](https://hub.docker.com/r/pmmp/pocketmine-mp)<br>
-* [Plugin repository](https://poggit.pmmp.io/plugins)
+* [Nukkit Github](https://github.com/NukkitX/Nukkit)<br>
+* [Nukkit Wiki](https://nukkitx.com/wiki/nukkit)<nr>
+* [Discord](https://discord.gg/5PzMkyK)<br>
+* [Forums](https://nukkitx.com/forums/)<br>
+* [Plugin repository](https://nukkitx.com/resources/categories/nukkit-plugins.1/)

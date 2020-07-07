@@ -45,3 +45,4 @@ nav:
       - Minecraft Bedrock:
           - Bedrock: 'games/minecraft/bedrock/bedrock.md'
           - Pocketmine: 'games/minecraft/bedrock/pocketmine.md'
+          - Nukkit: 'games/minecraft/bedrock/nukkit.md'
