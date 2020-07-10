@@ -20,7 +20,7 @@ apt install sudo screen unzip curl -y
 ```
 !!! warning 
     You may get a popup like the one below, use the arrow key to click yes to proceed.
-![update_Warning](https://i.imgur.com/IhHbY3a.png)
+![update_Warning](https://i.imgur.com/d57WtV7.png)
 
 ## Creating a user for Minecraft
 For security purposes, Minecraft should not be running under the root user. We will create a new system user and group with home directory /opt/Minecraft that will run the Minecraft server:
