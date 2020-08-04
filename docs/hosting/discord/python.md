@@ -15,6 +15,8 @@ In this article, we assume that:
 * Know how to establish an SSH connection.
 * You have a Linux VPS (Debian/Ubuntu).
 
+*Don't know how to connect to your server? Check out this [guide.](../../basics/first_login.md)*
+
 ## Installation
 
 To host a bot using discord.py on a server, you must install Python. If you're using a distro like Ubuntu 18.04 or Debian 10, then the appropriate version should already be installed.

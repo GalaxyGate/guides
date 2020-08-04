@@ -9,7 +9,7 @@ In this guide, you will be able to host a Bedrock Dedicated Minecraft server as 
 * You know how to establish an SSH connection or use an SSH client.
 <br/>
 
-*If you do not know how to connect to your server I would recommend using an SSH client like [bitvise](https://www.bitvise.com/ssh-client-download) or [Putty](https://www.putty.org/) and ask for help in our [support server.](https://discord.gg/jcKEyxn)*
+*Don't know how to connect to your server? Check out this [guide.](../../../basics/first_login.md)*
 
 ## Installing required packages
 I recommend you should be logged in as root before executing these commands to ensure everything goes smoothly.
@@ -20,7 +20,7 @@ apt install sudo screen unzip curl -y
 ```
 !!! warning 
     You may get a popup like the one below, use the arrow key to click yes to proceed.
-![update_Warning](https://i.imgur.com/d57WtV7.png)
+![update_Warning](./assets/update_warning.png)
 
 ## Creating a user for Minecraft
 For security purposes, Minecraft should not be running under the root user. We will create a new system user and group with home directory /opt/Minecraft that will run the Minecraft server and install unzip which is needed later.
@@ -58,7 +58,7 @@ Use the command below to start the server, please make sure you are in the same 
 ```
 LD_LIBRARY_PATH=. ./bedrock_server
 ```
-![MC_Pic](https://i.imgur.com/SSbHExv.png)
+![MC_Pic](./assets/bedrock/starting.png)
 
 ## Connecting to the server
 You should grab the IP of your server which can be found using the command below if you do not know it.
@@ -72,7 +72,7 @@ dig +short myip.opendns.com @resolver1.opendns.com
     ```curl icanhazip.com```
  Copy the IP and open Minecraft up, go to servers and click add a server and under `Server Address` put the server's IP in and click Done.
  
- ![MC_SERVER](https://i.imgur.com/2c5u5oa.png)
+ ![mc_server_add](./assets/mc_server_add.png)
 
 
 ## Keeping your server alive
@@ -99,7 +99,7 @@ echo "LD_LIBRARY_PATH=. ./bedrock_server" >>  Server.sh | chmod +x Server.sh
 ```
 You can then start your server by using the command below:
 ```bash
-screen -S Bedrock ./Server.sh
+screen -S Bedrock -L ./Server.sh
 ```
 This should create a session you can safely leave without fear of it shutting down when you leave. 
 You can leave the screen via `CTRL+AD` from this session so your Server is still online when you leave.
@@ -112,12 +112,12 @@ Systemd can be an easy way of keeping your Minecraft server up, setting a servic
 ```
 exit
 ```
-Once you are root we will start by creating a service file called `MinecraftVanilla.service` in `/etc/systemd/system/`.
+Once you are root we will start by creating a service file called `MinecraftBedrock.service` in `/etc/systemd/system/`.
 ```
 nano /etc/systemd/system/MinecraftBedrock.service
 ```
 Next, a screen like this will show up, you will fill it up with the config provided below.
-![systemd_blank](https://i.imgur.com/2Cx1wai.png)
+![systemd_blank](./assets/bedrock/systemd.png)
 Use this config.
 ```ini
 [Unit]
@@ -136,7 +136,7 @@ RestartSec=10
 [Install]
 WantedBy=multi-user.target
 ```
-![completed_systemd](https://i.imgur.com/nxpQaVx.png)
+![completed_systemd](./assets/bedrock/systemd_completed.png)
 
 !!! Hint
     To exit out of nano, use Ctrl + X and hit Y
@@ -166,7 +166,10 @@ Stop service:
 ```
 systemctl stop MinecraftBedrock.service 
 ```
-
+View logs:
+```
+journalctl -n 50 -f -u MinecraftBedrock.service
+```
 ## Resources
 * [FAQ](https://help.minecraft.net/hc/en-us/articles/360035131651-Dedicated-Servers-for-Minecraft-on-Bedrock-)<br>
 * [Download Page](https://www.minecraft.net/en-us/download/server/bedrock/)<br>
