@@ -1,4 +1,4 @@
-# GalaxyGate Guides [![Build Status](https://travis-ci.com/GalaxyGate/guides.svg?branch=master)](https://travis-ci.com/GalaxyGate/guides)
+# GalaxyGate Guides ![Docker CI](https://github.com/GalaxyGate/guides/workflows/Docker%20CI/badge.svg)
 
 This Website is a place where users can submit guides for server administration, bot 
 management and everything related.
