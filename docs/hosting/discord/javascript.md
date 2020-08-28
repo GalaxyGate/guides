@@ -15,14 +15,14 @@ In this article, we assume that:
 * You know how to use FTP/SFTP to upload files.
 * You have a Linux VPS (Debian/Ubuntu).
 
-*If you do not know how to connect to your server I would recommend using an SSH client like [bitvise](https://www.bitvise.com/ssh-client-download) or [Putty](https://www.putty.org/) and ask for help in our [support server.](https://discord.gg/jcKEyxn)*
+*Don't know how to connect to your server? Check out this [guide.](../../basics/first_login.md)*
 
 ## Upgrading packages 
 To ensure we have a smoother experince we should install some packages which includes some commands we may or may not use in the guide please either make sure you are executing these as root/a user with sudo.
 ```
 apt update && apt upgrade -y 
 apt install sudo screen curl unzip -y 
-apt -y install curl dirmngr apt-transport-https lsb-release ca-certificates 
+apt install curl dirmngr apt-transport-https lsb-release ca-certificates -y
 ```
 ## Installation
 
@@ -57,13 +57,13 @@ Verify that node is installed correctly.
 node -v
 npm -v
 ```
-![Node Version](https://i.imgur.com/6qEasvS.png)
+![Node Version](./assets/javascript/node_ver.png)
 
 If you do not get a response from above or something went wrong, please take a screenshot of what went wrong and ask for help in our [support server.](https://discord.gg/jcKEyxn) 
 
 
 ### Getting your bot onto the VPS
-First, you should zip your bot folder in preparation of what you should do next after you finish zipping your bot files with an SFTP client of your choice, you should upload the zipped file which should contain all your files to the server, you should also remember the name of the zipped file.
+First, you should zip your bot folder  (don't zip your node_modules) in preparation of what you should do next after you finish zipping your bot files with an SFTP client of your choice, you should upload the zipped file which should contain all your files to the server, you should also remember the name of the zipped file.
 
 !!! Note
     Don't have an SFTP client? you can download one [Here.](https://filezilla-project.org/download.php?type=client)
@@ -74,7 +74,7 @@ unzip bot.zip
 cd botName
 npm install 
 ```
-![unzipping](https://i.imgur.com/kRkvLX1.gif)
+![unzipping](./assets/javascript/unzip_bot.gif)
 ### Discord.JS
 
 You can now start your bot using
@@ -83,10 +83,10 @@ node filename.js
 ```
 !!! Note
     the filename would be the main node file e.g `index.js`, `bot.js` or `Botname.js`
-![node](https://i.imgur.com/w42z7b8.gif)
+![node](./assets/javascript/node_start.gif)
 
 
-To exit hit Control + C (Ctrl + c)
+To exit hit Ctrl + C
 
 
 !!! warning
@@ -127,12 +127,12 @@ sudo apt update && sudo apt install screen -y
 
 You can then start your bot by using the command below:
 ```bash
-screen -S <BotName> node x
+screen -S <BotName> -L node x
 ```
 
 *hint:* Replace x with the correct filename for your bot, for example:
 ```bash
-screen -S aero node index.js
+screen -S aero -L node index.js
 ```
 This should create a session you can safely leave without fear of it shutting down when you leave, 
 You can leave the screen via `CTRL+AD` from this session so your bot remains working after you leave.
@@ -156,7 +156,7 @@ After=multi-user.target
 [Service]
 WorkingDirectory=/root/botFolder
 User=root
-ExecStart=/usr/bin/node .
+ExecStart=/usr/bin/node index.js
 Type=simple
 Restart=always
 RestartSec=15
@@ -200,7 +200,6 @@ sudo systemctl restart bot # Restarts the 'bot' service.
 ```
 
 ### PM2
-What is PM2?
 PM2 is a process manager for the JavaScript runtime Node.js which can be used to keep node application alive after a killed SSH session. PM2 can easily start/stop/restart your bot as well as provide logging. 
 
 !!! warning
@@ -213,12 +212,13 @@ npm install pm2@latest -g
 ```
 
 #### Starting the bot
-*note:* Be in the same directory or use absolute paths.
-
-#### Commands
 ```bash
 pm2 start <botfile.js>
 ```
+
+*note:* Be in the same directory or use absolute paths.
+
+#### Commands
 To check the status
 ```bash
 pm2 ls

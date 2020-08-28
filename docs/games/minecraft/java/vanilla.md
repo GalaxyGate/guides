@@ -9,7 +9,7 @@ In this guide, you will be able to host a Minecraft server as well as keeping it
 * You know how to establish an SSH connection or use an SSH client.
 <br/>
 
-*If you do not know how to connect to your server I would recommend using an SSH client like [bitvise](https://www.bitvise.com/ssh-client-download) or [Putty](https://www.putty.org/) and ask for help in our [support server.](https://discord.gg/jcKEyxn)*
+*Don't know how to connect to your server? Check out this [guide.](../../../basics/first_login.md)*
 
 ## Installing required packages
 I recommend you should be logged in as root before executing these commands to ensure everything goes smoothly.
@@ -20,7 +20,7 @@ apt install sudo screen unzip curl -y
 ```
 !!! warning 
     You may get a popup like the one below, use the arrow key to click yes to proceed.
-![update_Warning](https://i.imgur.com/IhHbY3a.png)
+![update_Warning](./assets/update_warning.png)
 
 ## Creating a user for Minecraft
 For security purposes, Minecraft should not be running under the root user. We will create a new system user and group with home directory /opt/Minecraft that will run the Minecraft server:
@@ -87,16 +87,16 @@ java -Xmx1024M -Xms1024M -jar server.jar nogui
 !!! Hint
     server.jar might include numbering depending where you have downloaded your jar from, you can also increase the ram used by upping the Xmx and Xms flags.
 You will get a message asking you to accept the EULA.
-![EULA](https://i.imgur.com/pAjwp1m.png)
+![EULA](./assets/vanilla/eula.png)
 
 To accept the EULA just edit eula.txt and change false to true.
 ```
 nano eula.txt
 ```
 Before:
-![EULA_file](https://i.imgur.com/wUfBhXH.png)
+![EULA_file](./assets/vanilla/eula_file.png)
 After:
-![EULA_TRUE](https://i.imgur.com/pWjpex9.png)
+![EULA_TRUE](./assets/vanilla/eula_accepted.png)
 
 !!! note
     To exit from nano use Ctrl + X and Y to save the edited text.
@@ -104,8 +104,8 @@ Next you can run the same command again to start the server.
 ```
 java -Xmx1024M -Xms1024M -jar server.jar nogui
 ```
-![MC_1](https://i.imgur.com/DVirbqn.png)
-![MC_2](https://i.imgur.com/skvurXF.png)
+![Server_Starting](./assets/vanilla/server_starting.png)
+![Server_Starting](./assets/vanilla/server_starting2.png)
 
 ## Connecting to the server
 You should grab the IP of your server which can be found using the command below if you do not know it.
@@ -118,7 +118,7 @@ dig +short myip.opendns.com @resolver1.opendns.com
 
     ```curl icanhazip.com```
  Copy the IP and open Minecraft up, go to servers and click add a server and under `Server Address` put the server's IP in and click Done.
- ![MC_SERVER](https://i.imgur.com/43rB4i1.png)
+ ![MC_SERVER](./assets/mc_server_input.png)
 
 ## Keeping your server alive
 ### Screen
@@ -140,7 +140,7 @@ sudo apt update && sudo apt install screen -y
 #### Usage
 You can then start your server by using the command below:
 ```bash
-screen -S Minecraft java -Xmx1024M -Xms1024M -jar server.jar nogui
+screen -S Minecraft -L java -Xmx1024M -Xms1024M -jar server.jar nogui
 ```
 This should create a session you can safely leave without fear of it shutting down when you leave, 
 You can leave the screen via `CTRL+AD` from this session so your Server is still online when you leave.
@@ -158,7 +158,7 @@ Once you are root we will start by creating a service file called `MinecraftVani
 nano /etc/systemd/system/MinecraftVanilla.service
 ```
 Next, a screen like this will show up, you will fill it up with the config provided below.
-![systemd_blank](https://i.imgur.com/q6X5iMG.png)
+![systemd_blank](./assets/vanilla/systemd_blank.png)
 Use this config.
 ```ini
 [Unit]
@@ -177,7 +177,7 @@ RestartSec=10
 [Install]
 WantedBy=multi-user.target
 ```
-![completed_systemd](https://i.imgur.com/agT0pgD.png)
+![completed_systemd](./assets/vanilla/completed_systemd.png)
 
 !!! Hint
     To exit out of nano, use Ctrl + X and hit Y
@@ -206,6 +206,10 @@ systemctl status MinecraftVanilla.service
 Stop service:
 ```
 systemctl stop MinecraftVanilla.service 
+```
+View logs:
+```
+journalctl -n 50 -f -u MinecraftVanilla.service
 ```
 
 ## Resources

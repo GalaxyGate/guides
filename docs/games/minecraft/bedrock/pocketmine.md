@@ -9,7 +9,7 @@ In this guide, you will be able to host a PocketMine-MP Minecraft server as well
 * You know how to establish an SSH connection or use an SSH client.
 <br/>
 
-*If you do not know how to connect to your server I would recommend using an SSH client like [bitvise](https://www.bitvise.com/ssh-client-download) or [Putty](https://www.putty.org/) and ask for help in our [support server.](https://discord.gg/jcKEyxn)*
+*Don't know how to connect to your server? Check out this [guide.](../../../basics/first_login.md)*
 
 ## Installing required packages
 I recommend you should be logged in as root before executing these commands to ensure everything goes smoothly.
@@ -20,7 +20,7 @@ apt install sudo screen unzip curl -y
 ```
 !!! warning 
     You may get a popup like the one below, use the arrow key to click yes to proceed.
-![update_Warning](https://i.imgur.com/IhHbY3a.png)
+![update_Warning](./assets/update_warning.png)
 
 ## Creating a user for Minecraft
 For security purposes, Minecraft should not be running under the root user. We will create a new system user and group with home directory /opt/Minecraft that will run the Minecraft server:
@@ -47,7 +47,7 @@ The PocketMine-MP team has kindly made a script that will automatically install 
 ```
 curl -sL https://get.pmmp.io | bash -s -
 ```
-![good_PMMP_install](https://i.imgur.com/2BKWzm6.png)
+![pmmp_install](./assets/pocketmine/pmmp_install.png)
 
 ## Starting the server
 Execute the command below in the same directory you ran the installer script in.
@@ -55,11 +55,10 @@ Execute the command below in the same directory you ran the installer script in.
 ./start.sh
 ```
 This will ask you to start configuring your server which you should fill in yourselves.
-![config_start](https://i.imgur.com/axgqPxc.png)
-![license](https://i.imgur.com/UkjrQRc.png)
+![config_start](./assets/pocketmine/config_start.png)
+![license](./assets/pocketmine/license.png)
 
-!!! Warning
-    You should accept the license.
+
 ## Connecting to the server
 The server IP should be provided after you finish the setup however In the eventuality that you do not have the IP you can still use the commands listed below to find your IP.
 ```
@@ -70,9 +69,9 @@ dig +short myip.opendns.com @resolver1.opendns.com
 
     ```curl icanhazip.com```
  Copy the IP and open Minecraft up, go to servers and click add a server and under `Server Address` put the server's IP in and click Done.
- ![MC_SERVER](https://i.imgur.com/2c5u5oa.png)
+ ![mc_server_add](./assets/mc_server_add.png)
 
- ## Keeping your server alive
+## Keeping your server alive
 ### Screen
 
 Screen is one way of keeping your server running in the background without having to keep your SSH session open.
@@ -92,7 +91,7 @@ sudo apt update && sudo apt install screen -y
 #### Usage
 You can then start your server by using the command below:
 ```bash
-screen -S PMMP ./start.sh
+screen -S PMMP -L ./start.sh
 ```
 This should create a session you can safely leave without fear of it shutting down when you leave. 
 You can leave the screen via `CTRL+AD` from this session so your Server is still online when you leave.
@@ -110,7 +109,7 @@ Once you are root we will start by creating a service file called `MinecraftPMMP
 nano /etc/systemd/system/MinecraftPMMP.service
 ```
 Next, a screen like this will show up, you will fill it up with the config provided below.
-![systemd_blank](https://i.imgur.com/nVeERc6.png)
+![systemd_blank](./assets/pocketmine/systemd_blank.png)
 Use this config.
 ```ini
 [Unit]
@@ -129,7 +128,7 @@ RestartSec=10
 [Install]
 WantedBy=multi-user.target
 ```
-![completed_systemd](https://i.imgur.com/xgvEKA8.png)
+![completed_systemd](./assets/pocketmine/completed_systemd.png)
 
 !!! Hint
     To exit out of nano, use Ctrl + X and hit Y
@@ -158,6 +157,10 @@ systemctl status MinecraftPMMP.service
 Stop service:
 ```
 systemctl stop MinecraftPMMP.service 
+```
+View logs:
+```
+journalctl -n 50 -f -u MinecraftPMMP.service
 ```
 
 ## Resources
