@@ -12,7 +12,7 @@ In this guide, you will be able to host a PocketMine-MP Minecraft server as well
 *Don't know how to connect to your server? Check out this [guide.](../../../basics/first_login.md)*
 
 ## Installing required packages
-I recommend you should be logged in as root before executing these commands to ensure everything goes smoothly.
+I recommend that you should be logged in as root before executing these commands to ensure everything goes smoothly.
 
 ```
 apt update && apt upgrade -y 
