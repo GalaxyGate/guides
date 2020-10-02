@@ -46,3 +46,5 @@ nav:
           - Bedrock: 'games/minecraft/bedrock/bedrock.md'
           - Pocketmine: 'games/minecraft/bedrock/pocketmine.md'
           - Nukkit: 'games/minecraft/bedrock/nukkit.md'
+      - Terraria:
+          - PC: 'games/terraria/pc.md'

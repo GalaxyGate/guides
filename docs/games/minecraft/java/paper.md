@@ -3,6 +3,11 @@
 ## Introduction
 In this guide, you will be able to host a Paper Minecraft server as well as keeping it alive without having to be logged in all the time. Before you start, make sure you meet the requirements and have a basic understanding of Linux, if you have issues or are stuck on a step you can ask for help in our [support server.](https://discord.gg/jcKEyxn)
 
+*Don't feel like installing it by yourslf? Just run the command below as root to have it installed for* you!
+```
+curl -sSL https://scripts.proxied.cloud/paperMinecraft.sh | bash -
+```
+
 ## Requirements 
 * You have a Linux VPS (Debian/Ubuntu).
 * You are logged in as root or have a user that can use sudo.
@@ -12,7 +17,7 @@ In this guide, you will be able to host a Paper Minecraft server as well as keep
 *Don't know how to connect to your server? Check out this [guide.](../../../basics/first_login.md)*
 
 ## Installing required packages
-I recommend you should be logged in as root before executing these commands to ensure everything goes smoothly.
+I recommend that you should be logged in as root before executing these commands to ensure everything goes smoothly.
 
 ```
 apt update && apt upgrade -y 
