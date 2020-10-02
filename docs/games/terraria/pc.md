@@ -14,7 +14,7 @@ curl -sSL https://scripts.proxied.cloud/terraria.sh | bash -
 * You know how to establish an SSH connection or use an SSH client.
 <br/>
 
-*Don't know how to connect to your server? Check out this [guide.](../../../../basics/first_login.md)*
+*Don't know how to connect to your server? Check out this [guide](../../basics/first_login.md)*
 
 ## Installing required packages
 I recommend that you should be logged in as root before executing these commands to ensure everything goes smoothly.
