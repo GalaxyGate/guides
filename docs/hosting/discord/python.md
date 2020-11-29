@@ -173,6 +173,26 @@ and to revoke that you would do
 $ systemctl disable my_bot
 ```
 
+### Nohup
+On many Linux systems (if not all), including Ubuntu and Debian, you can use nohup to run your bot even after you have closed a session.
+To run nohup on your discord bot, you can do this, where bot.py is the name of your bot startup file.
+```
+$ nohup python3 bot.py &
+```
+This will create a file in your current directory called 'nohup.out'. You can redirect it to a file such as 'logs.txt' by running this instead:
+```
+$ nohup python3 bot.py &> logs.txt &
+```
+Tada! Your bot is online, and you can close the session without the bot dying.
+
+If you want to turn off the bot, things get a bit more complicated. You need to either get the PID of the bot's process, then kill it, or make a command in the bot for owners that calls ``os._exit(1)``. In this section, we'll cover getting the PID of the bot's process.
+To get the PID of the bot, you can run this:
+```
+$ ps -ef
+```
+This will display a large list of running processes. You'll need to find the line that has "python3 bot.py" in the rightmost column, then find the PID of that line (it's in the second column). Once you have that PID, you can run ``kill <pid>``, and the bot will gracefully free used memory, and shut off. Now, you can run the bot again :)
+
+
 ### Screen
 
 Most beginners would prefer this option as it's pretty straightforward, but it doesn't offer
