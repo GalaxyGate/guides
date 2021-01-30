@@ -57,27 +57,27 @@ jabba alias default openjdk@1.14.0
 !!! Information 
     Run `jabba` to see if was installed correctly. 
 ## Getting the server jar
-Please download one of the server Jars from below. Currently, 1.16 is the latest server jar.
+Please download one of the server Jars from below. Currently, 1.16.5 is the latest server jar.
 
-1.16
+1.16.5
 ```
-wget https://papermc.io/ci/job/Paper-1.16/lastStableBuild/artifact/paperclip.jar -O server.jar
+wget https://papermc.io/api/v2/projects/paper/versions/1.16.5/builds/457/downloads/paper-1.16.5-457.jar -O server.jar
 ```
 1.15.2
 ```
-wget https://papermc.io/api/v1/paper/1.15.2/143/download -O server.jar
+wget https://papermc.io/api/v2/projects/paper/versions/1.15.2/builds/391/downloads/paper-1.15.2-391.jar -O server.jar
 ```
 1.14.4
 ```
-wget https://papermc.io/api/v1/paper/1.14.4/243/download -O server.jar
+wget https://papermc.io/api/v2/projects/paper/versions/1.14.4/builds/243/downloads/paper-1.14.4-243.jar -O server.jar
 ```
 1.13.2
 ```
-wget https://papermc.io/api/v1/paper/1.13.2/655/download -O server.jar
+wget https://papermc.io/api/v2/projects/paper/versions/1.13.2/builds/655/downloads/paper-1.13.2-655.jar -O server.jar
 ```
 1.12.2
 ```
-wget https://papermc.io/api/v1/paper/1.12.2/1618/download -O server.jar
+wget https://papermc.io/api/v2/projects/paper/versions/1.12.2/builds/1618/downloads/paper-1.12.2-1618.jar -O server.jar
 ```
 
 !!! information

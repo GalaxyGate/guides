@@ -48,7 +48,7 @@ cd Bedrock
 ## Getting the files
 Download the files required to host the server as well as unzipping them using the command provided below.
 ```
-wget https://minecraft.azureedge.net/bin-linux/bedrock-server-1.16.1.02.zip -O server.zip
+wget https://minecraft.azureedge.net/bin-linux/bedrock-server-1.16.201.02.zip -O server.zip
 unzip server.zip
 rm server.zip
 ```
