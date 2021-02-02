@@ -57,10 +57,10 @@ jabba alias default openjdk@1.14.0
 ## Getting the server jar
 Please download the server jar from below.
 ```
-wget https://ci.nukkitx.com/job/NukkitX/job/Nukkit/job/master/lastSuccessfulBuild/artifact/target/nukkit-1.0-SNAPSHOT.jar/ -O Nukkit-server.jar
+wget https://ci.opencollab.dev/job/NukkitX/job/Nukkit/job/master/lastSuccessfulBuild/artifact/target/nukkit-1.0-SNAPSHOT.jar -O Nukkit-server.jar
 ```
 !!! information
-    Don't see the version you are looking for? you can grab the server jar from this [website](https://ci.nukkitx.com/job/NukkitX/job/Nukkit/job/master/)
+    Don't see the version you are looking for? you can grab the server jar from this [website](https://ci.opencollab.dev/job/NukkitX/job/Nukkit/job/master)
     
 ## Running the server
 First, make sure you do have java installed by running `java` and make sure you have the server jar file by running `ls` and you should see `server.jar` or the file you downloaded, to run the server run the command below once.

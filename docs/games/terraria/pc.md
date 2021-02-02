@@ -49,8 +49,12 @@ cd PC
 
 
 ## Getting the server files
-Please download one of the server Jars from below. Currently, 1.16 is the latest server jar.
+Please download one of the server files from below.
 
+Latest
+```
+wget https://www.terraria.org/system/dedicated_servers/archives/000/000/042/original/terraria-server-1412.zip -O server.zip
+```
 1.4.0.5
 ```
 wget https://www.terraria.org/system/dedicated_servers/archives/000/000/039/original/terraria-server-1405.zip -O server.zip

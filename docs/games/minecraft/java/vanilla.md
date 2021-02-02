@@ -54,7 +54,11 @@ jabba alias default openjdk@1.14.0
     Run `jabba` to see if was installed correctly. 
 
 ## Getting the server jar
-Please download one of the server Jars from below. Currently, 1.16.1 is the latest server jar.
+Please download one of the server Jars from below. Currently, 1.16.5 is the latest server jar.
+1.16.5
+```
+wget https://launcher.mojang.com/v1/objects/1b557e7b033b583cd9f66746b7a9ab1ec1673ced/server.jar -O server.jar
+```
 1.16.1
 ```
 wget https://launcher.mojang.com/v1/objects/a412fd69db1f81db3f511c1463fd304675244077/server.jar -O server.jar
