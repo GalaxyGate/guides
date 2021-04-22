@@ -16,30 +16,30 @@ I recommend that you should be logged in as root before executing these commands
 
 ```
 apt update && apt upgrade -y 
-apt install sudo screen unzip curl -y 
+apt install sudo screen unzip curl wget -y 
 ```
 !!! warning 
     You may get a popup like the one below, use the arrow key to click yes to proceed.
 ![update_Warning](./assets/update_warning.png)
 
 ## Creating a user for Minecraft
-For security purposes, Minecraft should not be running under the root user. We will create a new system user and group with home directory /opt/Minecraft that will run the Minecraft server:
+For security purposes, minecraft should not be running under the root user. We will create a new system user and group with home directory /opt/minecraft that will run the minecraft server:
 
 ```
-sudo useradd -r -m -U -d /opt/Minecraft -s /bin/bash Minecraft
+sudo useradd -r -m -U -d /opt/minecraft -s /bin/bash minecraft
 ```
-We are not going to set a password for this user. This is a good security practice because this user will not be able to log in via SSH. To login to the Minecraft user, you’ll need to be logged in to the server as root or user with sudo privileges.
+We are not going to set a password for this user. This is a good security practice because this user will not be able to log in via SSH. To login to the minecraft user, you’ll need to be logged in to the server as root or user with sudo privileges.
 
 Before starting with the installation process, make sure you switch to the Minecraft user.
 
 ```
-sudo su - Minecraft
+sudo su - minecraft
 ```
 ## Creating the Directory 
 If you plan to have multiple versions of Minecraft running I would recommend creating a folder for them to make sure the files do not conflict.
 ```
-mkdir Vanilla
-cd Vanilla
+mkdir vanilla
+cd vanilla
 ```
 
 ## Installing Java
@@ -51,7 +51,7 @@ jabba alias default openjdk@1.14.0
 ```
 
 !!! Information 
-    Run `jabba` to see if was installed correctly. 
+    Run `java` to see if was installed correctly. 
 
 ## Getting the server jar
 Please download one of the server Jars from below. Currently, 1.16.5 is the latest server jar.
@@ -140,7 +140,7 @@ You should've installed screen from the start of the guide. In the eventuality t
 sudo apt update && sudo apt install screen -y
 ```
 !!! warning
-    Make sure you are using root if you are still on the Minecraft account use `exit`, then execute the commands after you are done you should use the command listed to switch back to the Minecraft account `sudo su - Minecraft`.
+    Make sure you are using root if you are still on the Minecraft account use `exit`, then execute the commands after you are done you should use the command listed to switch back to the Minecraft account `sudo su - minecraft`.
 #### Usage
 You can then start your server by using the command below:
 ```bash
@@ -157,9 +157,9 @@ Systemd can be an easy way of keeping your Minecraft server up, setting a servic
 ```
 exit
 ```
-Once you are root we will start by creating a service file called `MinecraftVanilla.service` in `/etc/systemd/system/`.
+Once you are root we will start by creating a service file called `minecraft@vanilla.service` in `/etc/systemd/system/`.
 ```
-nano /etc/systemd/system/MinecraftVanilla.service
+nano /etc/systemd/system/minecraft@vanilla.service
 ```
 Next, a screen like this will show up, you will fill it up with the config provided below.
 ![systemd_blank](./assets/vanilla/systemd_blank.png)
@@ -173,8 +173,8 @@ Wants=network-online.target
 [Service]
 Type=simple
 User=Minecraft
-WorkingDirectory=/opt/Minecraft/Vanilla/
-ExecStart=/opt/Minecraft/.jabba/jdk/openjdk@1.14.0/bin/java -Xmx1024M -Xms1024M -jar server.jar nogui
+WorkingDirectory=/opt/minecraft/vanilla/
+ExecStart=/opt/minecraft/.jabba/jdk/openjdk@1.14.0/bin/java -Xmx1024M -Xms1024M -jar server.jar nogui
 Restart=always
 RestartSec=10
 
@@ -189,31 +189,31 @@ WantedBy=multi-user.target
 Run the commands below to test and start the server
 ```
 systemctl daemon-reload 
-systemctl start MinecraftVanilla.service 
-systemctl status MinecraftVanilla.service
-systemctl enable MinecraftVanilla.service
+systemctl start minecraft@vanilla.service 
+systemctl status minecraft@vanilla.service
+systemctl enable minecraft@vanilla.service
 ```
 #### Usage
 Here are some commands that will help you effectively manage the service.
 Start service:
 ```
-systemctl start MinecraftVanilla.service 
+systemctl start minecraft@vanilla.service 
 ```
 Restart service:
 ```
-systemctl restart MinecraftVanilla.service 
+systemctl restart minecraft@vanilla.service 
 ```
 Status of service:
 ```
-systemctl status MinecraftVanilla.service 
+systemctl status minecraft@vanilla.service 
 ```
 Stop service:
 ```
-systemctl stop MinecraftVanilla.service 
+systemctl stop minecraft@vanilla.service 
 ```
 View logs:
 ```
-journalctl -n 50 -f -u MinecraftVanilla.service
+journalctl -n 50 -f -u minecraft@vanilla.service
 ```
 
 ## Resources

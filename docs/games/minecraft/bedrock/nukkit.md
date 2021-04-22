@@ -23,10 +23,10 @@ apt install sudo screen unzip curl -y
 ![update_Warning](./assets/update_warning.png)
 
 ## Creating a user for Minecraft
-For security purposes, Minecraft should not be running under the root user. We will create a new system user and group with home directory /opt/Minecraft that will run the Minecraft server and install unzip which is needed later.
+For security purposes, Minecraft should not be running under the root user. We will create a new system user and group with home directory /opt/minecraft that will run the Minecraft server and install unzip which is needed later.
 
 ```
-sudo useradd -r -m -U -d /opt/Minecraft -s /bin/bash Minecraft
+sudo useradd -r -m -U -d /opt/minecraft -s /bin/bash minecraft
 ```
 
 We are not going to set a password for this user. This is a good security practice because this user will not be able to log in via SSH. To login to the Minecraft user, you’ll need to be logged in to the server as root or user with sudo privileges.
@@ -34,14 +34,14 @@ We are not going to set a password for this user. This is a good security practi
 Before starting with the installation process, make sure you switch to the Minecraft user.
 
 ```
-sudo su - Minecraft
+sudo su - minecraft
 ```
 
 ## Creating the Directory 
 If you plan to have multiple versions of Minecraft running I would recommend creating a folder for them to make sure the files do not conflict.
 ```
-mkdir Nukkit
-cd Nukkit
+mkdir nukkit
+cd nukkit
 ```
 ## Installing Java
 Run the commands below on the Minecraft user we created above.
@@ -52,7 +52,7 @@ jabba alias default openjdk@1.14.0
 ```
 
 !!! Information 
-    Run `jabba` to see if was installed correctly. 
+    Run `java` to see if was installed correctly. 
 
 ## Getting the server jar
 Please download the server jar from below.
@@ -103,7 +103,7 @@ You should've installed screen from the start of the guide. In the eventuality t
 sudo apt update && sudo apt install screen -y
 ```
 !!! warning
-    Make sure you are using root if you are still on the Minecraft account use `exit`, then execute the commands after you are done you should use the command listed to switch back to the Minecraft account `sudo su - Minecraft`.
+    Make sure you are using root if you are still on the Minecraft account use `exit`, then execute the commands after you are done you should use the command listed to switch back to the Minecraft account `sudo su - minecraft`.
 #### Usage
 You can then start your server by using the command below:
 ```bash
@@ -119,9 +119,9 @@ Systemd can be an easy way of keeping your Minecraft server up, setting a servic
 ```
 exit
 ```
-Once you are root we will start by creating a service file called `MinecraftNukkit.service` in `/etc/systemd/system/`.
+Once you are root we will start by creating a service file called `minecraft@nukkit.service` in `/etc/systemd/system/`.
 ```
-nano /etc/systemd/system/MinecraftNukkit.service
+nano /etc/systemd/system/minecraft@nukkit.service
 ```
 Next, a screen like this will show up, you will fill it up with the config provided below.
 ![systemd_blank](./assets/nukkit/systemd_empty.png)
@@ -134,9 +134,9 @@ Wants=network-online.target
 
 [Service]
 Type=simple
-User=Minecraft
-WorkingDirectory=/opt/Minecraft/Nukkit/
-ExecStart=/opt/Minecraft/.jabba/jdk/openjdk@1.14.0/bin/java -Xmx1024M -Xms1024M -jar Nukkit-server.jar nogui
+User=minecraft
+WorkingDirectory=/opt/minecraft/nukkit/
+ExecStart=/opt/minecraft/.jabba/jdk/openjdk@1.14.0/bin/java -Xmx1024M -Xms1024M -jar Nukkit-server.jar nogui
 Restart=always
 RestartSec=10
 
@@ -151,32 +151,32 @@ WantedBy=multi-user.target
 Run the commands below to test and start the server
 ```
 systemctl daemon-reload 
-systemctl start MinecraftNukkit.service 
-systemctl status MinecraftNukkit.service
-systemctl enable MinecraftNukkit.service
+systemctl start minecraft@nukkit.service 
+systemctl status minecraft@nukkit.service
+systemctl enable minecraft@nukkit.service
 
 ```
 #### Usage
 Here are some commands that will help you effectively manage the service.
 Start service:
 ```
-systemctl start MinecraftNukkit.service 
+systemctl start minecraft@nukkit.service 
 ```
 Restart service:
 ```
-systemctl restart MinecraftNukkit.service 
+systemctl restart minecraft@nukkit.service 
 ```
 Status of service:
 ```
-systemctl status MinecraftNukkit.service 
+systemctl status minecraft@nukkit.service 
 ```
 Stop service:
 ```
-systemctl stop MinecraftNukkit.service 
+systemctl stop minecraft@nukkit.service 
 ```
 View logs:
 ```
-journalctl -n 50 -f -u MinecraftNukkit.service
+journalctl -n 50 -f -u minecraft@nukkit.service
 ```
 ## Resources
 * [Nukkit Github](https://github.com/NukkitX/Nukkit)<br>

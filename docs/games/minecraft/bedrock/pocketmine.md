@@ -23,23 +23,23 @@ apt install sudo screen unzip curl -y
 ![update_Warning](./assets/update_warning.png)
 
 ## Creating a user for Minecraft
-For security purposes, Minecraft should not be running under the root user. We will create a new system user and group with home directory /opt/Minecraft that will run the Minecraft server:
+For security purposes, Minecraft should not be running under the root user. We will create a new system user and group with home directory /opt/minecraft that will run the Minecraft server:
 
 ```
-sudo useradd -r -m -U -d /opt/Minecraft -s /bin/bash Minecraft
+sudo useradd -r -m -U -d /opt/minecraft -s /bin/bash minecraft
 ```
 We are not going to set a password for this user. This is a good security practice because this user will not be able to log in via SSH. To login to the Minecraft user, you’ll need to be logged in to the server as root or user with sudo privileges.
 
 Before starting with the installation process, make sure you switch to the Minecraft user.
 
 ```
-sudo su - Minecraft
+sudo su - minecraft
 ```
 ## Creating the Directory 
 If you plan to have multiple versions of Minecraft running I would recommend creating a folder for them to make sure the files do not conflict.
 ```
-mkdir PMMP
-cd PMMP
+mkdir pmmp
+cd pmmp
 ```
 
 ## Using the installer
@@ -87,7 +87,7 @@ You should've installed screen from the start of the guide. In the eventuality t
 sudo apt update && sudo apt install screen -y
 ```
 !!! warning
-    Make sure you are using root if you are still on the Minecraft account use `exit`, then execute the commands after you are done you should use the command listed to switch back to the Minecraft account `sudo su - Minecraft`.
+    Make sure you are using root if you are still on the Minecraft account use `exit`, then execute the commands after you are done you should use the command listed to switch back to the Minecraft account `sudo su - minecraft`.
 #### Usage
 You can then start your server by using the command below:
 ```bash
@@ -104,9 +104,9 @@ Systemd can be an easy way of keeping your Minecraft server up, setting a servic
 ```
 exit
 ```
-Once you are root we will start by creating a service file called `MinecraftPMMP.service` in `/etc/systemd/system/`.
+Once you are root we will start by creating a service file called `minecraft@pmmp.service` in `/etc/systemd/system/`.
 ```
-nano /etc/systemd/system/MinecraftPMMP.service
+nano /etc/systemd/system/minecraft@pmmp.service
 ```
 Next, a screen like this will show up, you will fill it up with the config provided below.
 ![systemd_blank](./assets/pocketmine/systemd_blank.png)
@@ -120,7 +120,7 @@ Wants=network-online.target
 [Service]
 Type=simple
 User=Minecraft
-WorkingDirectory=/opt/Minecraft/PMMP/
+WorkingDirectory=/opt/minecraft/pmmp/
 ExecStart=/bin/bash start.sh
 Restart=always
 RestartSec=10
@@ -136,31 +136,31 @@ WantedBy=multi-user.target
 Run the commands below to test and start the server
 ```
 systemctl daemon-reload 
-systemctl start MinecraftPMMP.service 
-systemctl status MinecraftPMMP.service
-systemctl enable MinecraftPMMP.service
+systemctl start minecraft@pmmp.service 
+systemctl status minecraft@pmmp.service
+systemctl enable minecraft@pmmp.service
 ```
 #### Usage
 Here are some commands that will help you effectively manage the service.
 Start service:
 ```
-systemctl start MinecraftPMMP.service 
+systemctl start minecraft@pmmp.service 
 ```
 Restart service:
 ```
-systemctl restart MinecraftPMMP.service 
+systemctl restart minecraft@pmmp.service 
 ```
 Status of service:
 ```
-systemctl status MinecraftPMMP.service 
+systemctl status minecraft@pmmp.service 
 ```
 Stop service:
 ```
-systemctl stop MinecraftPMMP.service 
+systemctl stop minecraft@pmmp.service 
 ```
 View logs:
 ```
-journalctl -n 50 -f -u MinecraftPMMP.service
+journalctl -n 50 -f -u minecraft@pmmp.service
 ```
 
 ## Resources
