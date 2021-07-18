@@ -2,13 +2,13 @@
 ### Introduction
 GalaxyGate servers can be managed by using an SSH client or SSH via terminal.To connect to your server, you'll need to open a terminal. How you do this varies between operating systems, but generally for the following operating systems:
 
-* Linux: Search Terminal or press CTRL+ALT+T.
-* macOS: Search Terminal.
-* Windows Git bash: [Git for windows](https://gitforwindows.org/) comes with SSH.
-* Windows SSH Client: You can download an SSH client like [Bitvise](https://www.bitvise.com/ssh-client-download).
+* **Linux**: Search Terminal or press CTRL+ALT+T.
+* **macOS**: Search Terminal.
+* **Windows Git bash**: [Git for windows](https://gitforwindows.org/) comes with SSH.
+* **Windows SSH Client**: You can download an SSH client like [Bitvise](https://www.bitvise.com/ssh-client-download). (see this [section](./#using-an-ssh-client))
 
 ## Using terminal 
-Once the terminal is open, enter the following command. Make sure to substitute in your server's IP address after the `@` (`192.198.93.134`) should be your server's address.
+Once the terminal is open, enter the following command. **Make sure to substitute in your server's IP address after the `@` (`192.198.93.134`) should be your server's address**.
 
 ```bash
 ssh root@192.198.93.134
@@ -47,7 +47,7 @@ If this happens, you can delete the old server's host key from your local system
 ![SSH_NEW_HOST](./assets/first_login/ssh_key_changed.png)
 
 ## Using an SSH Client
-Bitvise is a good SSH Client to use due to fact it has a built-in terminal along with a built-in SFTP client which is useful for transfering files without the use of git/CLI. You can find the download link of bitvise at the start of the guide ...
+Bitvise is a good SSH Client to use due to fact it has a built-in terminal along with a built-in SFTP client which is useful for transfering files without the use of git/CLI. You can download it [here](https://www.bitvise.com/ssh-client-download).
 
 ### Inputting the details
 You will see an GUI like this when you first open Bitvise.

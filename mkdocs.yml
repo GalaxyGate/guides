@@ -1,7 +1,7 @@
 site_name: 'GalaxyGate Guides'
-site_description: 'GalaxyGate guides'
+site_description: 'GalaxyGate Guides'
 site_author: 'GalaxyGate Community'
-
+site_url: 'https://wiki.galaxygate.net'
 # Configuration
 theme:
   name: 'material'
@@ -29,7 +29,7 @@ nav:
   - Home: 'index.md'
   - Linux Basics:
       - 'basics/index.md'
-      - Logging In: 'basics/first_login.md'
+      - Login: 'basics/first_login.md'
       - Creating Sudo User: 'basics/sudo_user.md'
       - Fix unable to resolve host: 'basics/fix_hostname.md'
   - Hosting:

@@ -18,7 +18,7 @@ In this article, we assume that:
 *Don't know how to connect to your server? Check out this [guide.](../../basics/first_login.md)*
 
 ## Upgrading packages 
-To ensure we have a smoother experince we should install some packages which includes some commands we may or may not use in the guide please either make sure you are executing these as root/a user with sudo.
+To ensure we have a smoother experience we should install some packages which includes some commands we may or may not use in the guide please either make sure you are executing these as root/a user with sudo.
 ```
 apt update && apt upgrade -y 
 apt install sudo screen curl unzip -y 
@@ -30,11 +30,11 @@ apt install curl dirmngr apt-transport-https lsb-release ca-certificates -y
 
 For a JavaScript discord bot, you will need to have Node.js and npm installed on the server.
 To install Node.js & npm run the commands listed.
-You can choose which version to install if you have a preference however I recommend that you should choose v12.
+You can choose which version to install if you have a preference however I recommend that you should choose v14.
 
 v10
 ```bash
-curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash –
+curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
 sudo apt -y install nodejs
 ```
 v12
@@ -44,12 +44,12 @@ sudo apt -y install nodejs
 ```
 v13
 ```bash
-curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash –
+curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
 sudo apt -y install nodejs
 ```
 V14
 ```bash
-curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash –
+curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 sudo apt -y install nodejs
 ```
 Verify that node is installed correctly.
@@ -63,7 +63,7 @@ If you do not get a response from above or something went wrong, please take a s
 
 
 ### Getting your bot onto the VPS
-First, you should zip your bot folder  (don't zip your node_modules) in preparation of what you should do next after you finish zipping your bot files with an SFTP client of your choice, you should upload the zipped file which should contain all your files to the server, you should also remember the name of the zipped file.
+First, you should zip your bot folder (**don't zip your node_modules**) in preparation for what you should do next after you finish zipping your bot files with an SFTP client of your choice, you should upload the zipped file which should contain all your files to the server, you should also remember the name of the zipped file.
 
 !!! Note
     Don't have an SFTP client? you can download one [Here.](https://filezilla-project.org/download.php?type=client)
@@ -75,14 +75,14 @@ cd botName
 npm install 
 ```
 ![unzipping](./assets/javascript/unzip_bot.gif)
-### Discord.JS
+### Running the Bot
 
 You can now start your bot using
 ```bash
 node filename.js 
 ```
 !!! Note
-    the filename would be the main node file e.g `index.js`, `bot.js` or `Botname.js`
+    The filename would be the main node file e.g `index.js`, `bot.js` or `Botname.js`
 ![node](./assets/javascript/node_start.gif)
 
 
@@ -94,11 +94,9 @@ To exit hit Ctrl + C
 
     II: Avoid committing your token to GitHub if you use that.
 
-    III: Do not copy your node_modules folder use npm install, it saves you time and allows the deps to be built correctly.
-If everything went okay this far, you're left with one issue.
-While the bot is online in your server, it's only running inside of the current SSH session.
-Once you end that session, the bot's process gets terminated with it.
-To prevent this from happening, here are a few different methods:
+    III: Do not copy your node_modules folder use npm install, it saves you time and allows the dependencies to be built correctly.
+If everything went okay this far, you're left with one issue. While the bot is online on your server, it's only running inside of the current SSH session. Once you end that session, the bot's process gets terminated with it. To prevent this from happening, here are a few different methods:
+
 
 ## 24/7
 If you have successfully run the bot from the command line from above without any errors or issues then you should be ready to set up 24/7 bot hosting to keep the bot online.
