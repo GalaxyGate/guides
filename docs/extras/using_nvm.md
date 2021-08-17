@@ -4,7 +4,12 @@ Node version manager allows you to change your NodeJS version with a few simple 
 ![nvm](https://techout.is-a.dev/SG323g3z)
 #### That above is the base screen when you run `nvm`
 ## Here's how to install node version manager (nvm)
-Run the following:
+First of all, let's start by updating and upgrading everything.
+You can update and upgrade everything by running the following:
+```
+apt-get update && apt-get upgrade 
+```
+After that, Run the following to install:
 ```
 wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
 ```
