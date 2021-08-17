@@ -3,7 +3,12 @@
 Tmate allows you to invite another user to your server without giving any ssh passes or adding ssh keys.
 ![tmate](https://techout.is-a.dev/BD4qMvGX)
 ### How to install tmate
-Run the following to install the latest version of tmate available: 
+Let's start by updating and upgrading everything
+Run the following to update and upgrade everything:
+```
+apt-get update && apt-get upgrade
+```
+After that, run the following to install the latest version of tmate available: 
 ```
 apt-get install tmate
 ```
