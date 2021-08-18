@@ -48,3 +48,8 @@ nav:
           - Nukkit: 'games/minecraft/bedrock/nukkit.md'
       - Terraria:
           - PC: 'games/terraria/pc.md'
+  - Extras:
+      - 'extras/index.md'
+      - Tools:
+          - NVM: 'extras/tools/using_nvm.md'
+          - Tmate: 'extras/tools/using_tmate.md'     
