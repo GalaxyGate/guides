@@ -50,11 +50,18 @@ jabba install openjdk@1.14.0
 jabba alias default openjdk@1.14.0
 ```
 
-!!! Information 
-    Run `java` to see if was installed correctly. 
-
+!!! Note
+    1.17 - 1.17.x should run this instead!
+```
+jabba install openjdk@1.16.0
+jabba alias default openjdk@1.16.0
+```
 ## Getting the server jar
-Please download one of the server Jars from below. Currently, 1.16.5 is the latest server jar.
+Please download one of the server Jars from below. Currently, 1.17.1 is the latest server jar.
+1.17.1
+```
+wget https://launcher.mojang.com/v1/objects/a16d67e5807f57fc4e550299cf20226194497dc2/server.jar -O server.jar
+```
 1.16.5
 ```
 wget https://launcher.mojang.com/v1/objects/1b557e7b033b583cd9f66746b7a9ab1ec1673ced/server.jar -O server.jar
@@ -62,22 +69,6 @@ wget https://launcher.mojang.com/v1/objects/1b557e7b033b583cd9f66746b7a9ab1ec167
 1.16.1
 ```
 wget https://launcher.mojang.com/v1/objects/a412fd69db1f81db3f511c1463fd304675244077/server.jar -O server.jar
-```
-1.15.2
-```
-wget https://launcher.mojang.com/v1/objects/bb2b6b1aefcd70dfd1892149ac3a215f6c636b07/server.jar -O server.jar
-```
-1.15.1
-```
-wget https://launcher.mojang.com/v1/objects/4d1826eebac84847c71a77f9349cc22afd0cf0a1/server.jar -O server.jar
-```
-1.15
-```
-wget https://launcher.mojang.com/v1/objects/e9f105b3c5c7e85c7b445249a93362a22f62442d/server.jar -O server.jar
-```
-1.14.4
-```
-wget https://launcher.mojang.com/v1/objects/3dc3d84a581f14691199cf6831b71ed1296a9fdf/server.jar -O server.jar
 ```
 
 !!! information

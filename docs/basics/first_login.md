@@ -1,4 +1,5 @@
 # How to login (Linux)
+
 ### Introduction
 GalaxyGate servers can be managed by using an SSH client or SSH via terminal.To connect to your server, you'll need to open a terminal. How you do this varies between operating systems, but generally for the following operating systems:
 

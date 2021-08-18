@@ -92,7 +92,7 @@ python bot.py
     If you use a file like `launcher.py` to start your bot, replace `bot.py` with that instead.
 
 !!! warning
-    Encountering a `ModuleNotFound: No module named 'discord'` when trying to run the command above? Chances are is
+    Encountering a `ModuleNotFound: No module named 'discord'` when trying to run the command above? Chances are
     you didn't activate the virtual environment or install the dependency.
 
 Now you can close your SSH client, but chances are is that your bot will stop which can be frustrating. Luckily, you can solve this by
