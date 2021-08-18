@@ -138,7 +138,9 @@ You can then start your bot by using the command below:
 screen -S <BotName> -L node x
 ```
 
-*hint:* Replace x with the correct filename for your bot, for example:
+!!! hint
+    Replace x with the correct filename for your bot, for example:
+
 ```bash
 screen -S aero -L node index.js
 ```
@@ -234,6 +236,10 @@ pm2 ls
 To check logs 
 ```bash
 pm2 logs 0
+```
+To enable systemd pm2
+```bash
+pm2 startup
 ```
 #### PM2 tips
 - Use `pm2 save` to save the processes.
