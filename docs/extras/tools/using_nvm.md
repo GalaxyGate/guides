@@ -31,7 +31,7 @@ Should look like this:
 
 If for some reason it doesn't start using it automatically after installed, run this:
 ```
-nvm use v16
+nvm use v16   
 ```
 If the version isn't available it'll provide an error saying to install it.
 That should conclude the install and how to use process.
