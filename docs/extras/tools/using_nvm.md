@@ -39,5 +39,6 @@ If the version isn't available it'll provide an error saying to install it.
 That should conclude the install and how to use process.
 
 Usage of nvm can be found [here](https://github.com/nvm-sh/nvm#usage).
+
 ### Resources
 * [Git Repo](https://github.com/nvm-sh/nvm)
