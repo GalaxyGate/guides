@@ -28,7 +28,7 @@ nvm install v16
 Should look like this:
 
 ![nvm_install](./assets/tools/nvm_install.png)
-
+ 
 If for some reason it doesn't start using it automatically after installed, run this:
 ```
 nvm use v16   
