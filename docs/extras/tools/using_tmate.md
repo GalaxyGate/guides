@@ -1,7 +1,7 @@
 # Using tmate (Collaboration tool)
 ### Introduction
 Tmate allows you to invite another user to your server without giving any ssh passes or adding ssh keys.
-![tmate](https://techout.is-a.dev/BD4qMvGX)
+![tmate](./assets/tools/tmate_help.png)
 ### How to install tmate
 Let's start by updating and upgrading everything
 Run the following to update and upgrade everything:

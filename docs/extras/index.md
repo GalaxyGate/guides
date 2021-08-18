@@ -1,4 +1,6 @@
 Welcome to the extras section of the GalaxyGate Wiki.
 
-This section contains the extras of Linux VPS administration, from using nvm to collaborating via tmate
-On the left, you can find a list of all available guides. 
+Most of these guides assume that **you have very basic knowledge of Linux** and that you can connect to your server. 
+**If you are not familiar with linux**, you can check out the basics [here](/basics).
+
+On the left, you can find a list of all available extras guides.
