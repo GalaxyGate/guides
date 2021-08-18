@@ -4,7 +4,7 @@ In this guide, you will be able to host a PC terraria server as well as keeping 
 
 *Don't feel like installing it by yourslf? Just run the command below as root to have it installed for* you!
 ```
-curl -sSL https://scripts.proxied.cloud/terraria.sh | bash -
+curl -sSL https://sh.galaxygate.cloud/games/terraria/pc.sh | bash -
 ```
 
 
@@ -53,7 +53,7 @@ Please download one of the server files from below.
 
 Latest
 ```
-wget https://www.terraria.org/system/dedicated_servers/archives/000/000/042/original/terraria-server-1412.zip -O server.zip
+wget https://terraria.org/api/download/pc-dedicated-server/terraria-server-1423.zip -O server.zip
 ```
 1.4.0.5
 ```
