@@ -1,7 +1,7 @@
 # Using Node Version Manager
 ### Introduction
 Node version manager allows you to change your NodeJS version with a few simple commands.
-![nvm](./assets/tools/nvm_home.png)
+![nvm](/extras/assets/tools/nvm_home.png)
 That above is the base screen when you run `nvm`
 ### Here's how to install node version manager (nvm)
 First of all, let's start by updating and upgrading everything.
@@ -27,7 +27,7 @@ nvm install v16
 ```
 Should look like this:
 
-![nvm_install](./assets/tools/nvm_install.png)
+![nvm_install](/extras/assets/tools/nvm_install.png)
  
 If for some reason it doesn't start using it automatically after installed, run this:
 ```
