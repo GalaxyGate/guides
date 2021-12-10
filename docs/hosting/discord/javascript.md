@@ -55,9 +55,6 @@ v10
 curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
 sudo apt -y install nodejs
 ```
-
-
-
 Verify that node is installed correctly.
 ```bash
 node -v
