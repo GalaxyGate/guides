@@ -34,6 +34,7 @@ For a JavaScript discord bot, you will need to have Node.js and npm installed on
 To install Node.js & npm run the commands listed.
 You can choose which version to install if you have a preference however I recommend that you should 
 choose v16.
+
 V17
 ```bash
 curl -sL https://deb.nodesource.com/setup_17.x | sudo -E bash -
