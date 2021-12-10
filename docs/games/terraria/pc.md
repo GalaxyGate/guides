@@ -2,11 +2,6 @@
 ## Introduction
 In this guide, you will be able to host a PC terraria server as well as keeping it alive without having to be logged in all the time. Before you start, make sure you meet the requirements and have a basic understanding of Linux, if you have issues or are stuck on a step you can ask for help in our [support server.](https://discord.gg/jcKEyxn)
 
-*Don't feel like installing it by yourslf? Just run the command below as root to have it installed for* you!
-```
-curl -sSL https://sh.galaxygate.cloud/games/terraria/pc.sh | bash -
-```
-
 
 ## Requirements 
 * You have a Linux VPS (Debian/Ubuntu).
@@ -53,7 +48,7 @@ Please download one of the server files from below.
 
 Latest
 ```
-wget https://terraria.org/api/download/pc-dedicated-server/terraria-server-1423.zip -O server.zip
+wget https://terraria.org/api/download/pc-dedicated-server/terraria-server-1432.zip -O server.zip
 ```
 1.4.0.5
 ```

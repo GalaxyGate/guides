@@ -58,10 +58,14 @@ jabba install openjdk@1.16.0
 jabba alias default openjdk@1.16.0
 ```
 ## Getting the server jar
-Please download one of the server Jars from below. Currently, 1.17.1 is the latest server jar.
+Please download one of the server Jars from below. Currently, 1.18 is the latest server jar.
+1.18
+```
+wget https://papermc.io/api/v2/projects/paper/versions/1.18/builds/65/downloads/paper-1.18-65.jar -O server.jar
+```
 1.17.1
 ```
-wget https://papermc.io/api/v2/projects/paper/versions/1.17.1/builds/195/downloads/paper-1.17.1-195.jar -O server.jar
+wget https://papermc.io/api/v2/projects/paper/versions/1.17.1/builds/398/downloads/paper-1.17.1-398.jar -O server.jar
 ```
 1.16.5
 ```
@@ -74,7 +78,7 @@ wget https://papermc.io/api/v2/projects/paper/versions/1.15.2/builds/391/downloa
 1.14.4
 ```
 wget https://papermc.io/api/v2/projects/paper/versions/1.14.4/builds/243/downloads/paper-1.14.4-243.jar -O server.jar
-
+```
 !!! information
     Don't see the version you are looking for? you can grab the server jar from this [website](https://papermc.io/legacy)
 
