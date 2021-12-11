@@ -22,44 +22,37 @@ To ensure we have a smoother experience we should install some packages which in
 ```
 apt update && apt upgrade -y 
 apt install sudo screen curl unzip -y 
-apt install curl dirmngr apt-transport-https lsb-release ca-certificates -y
+apt install curl dirmngr apt-transport-https lsb-release libgnutls30 ca-certificates -y
 ```
+!!! warning
+    You should run this first, we use curl later on.
 ## Installation
 
 ### Node.js
 
 For a JavaScript discord bot, you will need to have Node.js and npm installed on the server.
 To install Node.js & npm run the commands listed.
-You can choose which version to install if you have a preference however I recommend that you should choose v14.
+You can choose which version to install if you have a preference however I recommend that you should 
+choose v16.
 
-v10
+V17
 ```bash
-curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
-sudo apt -y install nodejs
-```
-v12
-```
-curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
-sudo apt -y install nodejs
-```
-v13
-```bash
-curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
-sudo apt -y install nodejs
-```
-V14
-```bash
-curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-sudo apt -y install nodejs
-```
-V15
-```bash
-curl -sL https://deb.nodesource.com/setup_15.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_17.x | sudo -E bash -
 sudo apt -y install nodejs
 ```
 V16
 ```bash
 curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+sudo apt -y install nodejs
+```
+V12
+```bash
+curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+sudo apt -y install nodejs
+```
+v10
+```bash
+curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
 sudo apt -y install nodejs
 ```
 Verify that node is installed correctly.
