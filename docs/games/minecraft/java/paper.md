@@ -54,14 +54,14 @@ jabba alias default openjdk@1.14.0
 !!! Note
     1.17 - 1.17.x should run this instead!
 ```
-jabba install openjdk@1.16.0
-jabba alias default openjdk@1.16.0
+jabba install openjdk@1.17.0
+jabba alias default openjdk@1.17.0
 ```
 ## Getting the server jar
-Please download one of the server Jars from below. Currently, 1.18 is the latest server jar.
+Please download one of the server Jars from below. Currently, 1.19.2 is the latest server jar.
 1.18
 ```
-wget https://papermc.io/api/v2/projects/paper/versions/1.18/builds/65/downloads/paper-1.18-65.jar -O server.jar
+wget https://api.papermc.io/v2/projects/paper/versions/1.19.2/builds/189/downloads/paper-1.19.2-189.jar -O server.jar
 ```
 1.17.1
 ```
