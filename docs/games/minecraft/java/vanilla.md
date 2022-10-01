@@ -53,11 +53,14 @@ jabba alias default openjdk@1.14.0
 !!! Note
     1.17 - 1.17.x should run this instead!
 ```
-jabba install openjdk@1.16.0
-jabba alias default openjdk@1.16.0
+jabba install openjdk@1.17.0
+jabba alias default openjdk@1.17.0
 ```
 ## Getting the server jar
-Please download one of the server Jars from below. Currently, 1.17.1 is the latest server jar.
+Please download one of the server Jars from below. Currently, 1.19.2 is the latest server jar.
+```
+wget https://piston-data.mojang.com/v1/objects/f69c284232d7c7580bd89a5a4931c3581eae1378/server.jar -O server.jar
+```
 1.17.1
 ```
 wget https://launcher.mojang.com/v1/objects/a16d67e5807f57fc4e550299cf20226194497dc2/server.jar -O server.jar

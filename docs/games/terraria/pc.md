@@ -48,27 +48,7 @@ Please download one of the server files from below.
 
 Latest
 ```
-wget https://terraria.org/api/download/pc-dedicated-server/terraria-server-1432.zip -O server.zip
-```
-1.4.0.5
-```
-wget https://www.terraria.org/system/dedicated_servers/archives/000/000/039/original/terraria-server-1405.zip -O server.zip
-```
-1.4.0.4
-```
-wget https://www.terraria.org/system/dedicated_servers/archives/000/000/038/original/terraria-server-1404.zip -O server.zip
-```
-1.4.0.3
-```
-wget https://terraria.org/system/dedicated_servers/archives/000/000/037/original/terraria-server-1403.zip -O server.zip
-```
-1.4.0.2
-```
-wget https://terraria.org/system/dedicated_servers/archives/000/000/036/original/terraria-server-1402.zip -O server.zip
-```
-1.3.5.3
-```
-wget http://terraria.org/server/terraria-server-1353.zip -O server.zip
+wget https://terraria.org/api/download/pc-dedicated-server/terraria-server-1442.zip -O server.zip
 ```
 
 !!! information
