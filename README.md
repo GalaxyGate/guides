@@ -26,5 +26,5 @@ mkdocs serve
 * All documents are inside the `docs/` folder.
 * Menu links are located on the `mkdocs.yml` file.
 * Keep images locally refer to existing guides to see how it is done.
-* Links are to be from related sources e.g no url shortners, tracking links or from obscure sites. 
+* Links are to be from related sources e.g. no short urls, tracking links or from obscure sites. 
 * Run `mkdocs build --strict --verbose` and check for any errors before making a PR.

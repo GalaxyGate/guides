@@ -48,7 +48,7 @@ Please download one of the server files from below.
 
 Latest
 ```
-wget https://terraria.org/api/download/pc-dedicated-server/terraria-server-1442.zip -O server.zip
+wget https://terraria.org/api/download/pc-dedicated-server/terraria-server-1449.zip -O server.zip
 ```
 
 !!! information
