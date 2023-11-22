@@ -52,35 +52,27 @@ jabba alias default openjdk@1.14.0
 !!! Information 
     Run `java` to see if was installed correctly. 
 !!! Note
-    1.17 - 1.17.x should run this instead!
+    1.17+ should run this instead!
 ```
 jabba install openjdk@1.17.0
 jabba alias default openjdk@1.17.0
 ```
 ## Getting the server jar
-Please download one of the server Jars from below. Currently, 1.19.2 is the latest server jar.
-1.18
+Please download one of the server Jars from below. Currently, 1.20.1 is the latest server jar.
+1.20.1
 ```
-wget https://api.papermc.io/v2/projects/paper/versions/1.19.2/builds/189/downloads/paper-1.19.2-189.jar -O server.jar
+wget https://api.papermc.io/v2/projects/paper/versions/1.20.1/builds/145/downloads/paper-1.20.1-145.jar -O server.jar
 ```
-1.17.1
+1.20
 ```
-wget https://papermc.io/api/v2/projects/paper/versions/1.17.1/builds/398/downloads/paper-1.17.1-398.jar -O server.jar
+wget https://api.papermc.io/v2/projects/paper/versions/1.20/builds/17/downloads/paper-1.20-17.jar -O server.jar
 ```
-1.16.5
+1.19.4
 ```
-wget https://papermc.io/api/v2/projects/paper/versions/1.16.5/builds/457/downloads/paper-1.16.5-457.jar -O server.jar
-```
-1.15.2
-```
-wget https://papermc.io/api/v2/projects/paper/versions/1.15.2/builds/391/downloads/paper-1.15.2-391.jar -O server.jar
-```
-1.14.4
-```
-wget https://papermc.io/api/v2/projects/paper/versions/1.14.4/builds/243/downloads/paper-1.14.4-243.jar -O server.jar
+wget https://api.papermc.io/v2/projects/paper/versions/1.19.4/builds/550/downloads/paper-1.19.4-550.jar -O server.jar
 ```
 !!! information
-    Don't see the version you are looking for? you can grab the server jar from this [website](https://papermc.io/legacy)
+    Don't see the version you are looking for? you can grab the server jar from this [website](https://papermc.io/legacy) or [here](https://papermc.io/downloads/all)
 
 ## Running the server
 First, make sure you do have java installed by running `java` and make sure you have the server jar file by running `ls` and you should see `server.jar` or the file you downloaded, to run the server run the command below once.

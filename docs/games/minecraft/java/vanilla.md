@@ -51,27 +51,27 @@ jabba alias default openjdk@1.14.0
 ```
 
 !!! Note
-    1.17 - 1.17.x should run this instead!
+    1.17+ hould run this instead!
 ```
 jabba install openjdk@1.17.0
 jabba alias default openjdk@1.17.0
 ```
 ## Getting the server jar
-Please download one of the server Jars from below. Currently, 1.19.2 is the latest server jar.
+Please download one of the server Jars from below. Currently, 1.20.1 is the latest server jar.
 ```
-wget https://piston-data.mojang.com/v1/objects/f69c284232d7c7580bd89a5a4931c3581eae1378/server.jar -O server.jar
+wget https://piston-data.mojang.com/v1/objects/84194a2f286ef7c14ed7ce0090dba59902951553/server.jar -O server.jar
 ```
-1.17.1
+1.20
 ```
-wget https://launcher.mojang.com/v1/objects/a16d67e5807f57fc4e550299cf20226194497dc2/server.jar -O server.jar
+wget https://piston-data.mojang.com/v1/objects/15c777e2cfe0556eef19aab534b186c0c6f277e1/server.jar -O server.jar
 ```
-1.16.5
+1.19.4
 ```
-wget https://launcher.mojang.com/v1/objects/1b557e7b033b583cd9f66746b7a9ab1ec1673ced/server.jar -O server.jar
+wget https://piston-data.mojang.com/v1/objects/8f3112a1049751cc472ec13e397eade5336ca7ae/server.jar -O server.jar
 ```
-1.16.1
+1.18.2
 ```
-wget https://launcher.mojang.com/v1/objects/a412fd69db1f81db3f511c1463fd304675244077/server.jar -O server.jar
+wget https://piston-data.mojang.com/v1/objects/c8f83c5655308435b3dcf03c06d9fe8740a77469/server.jar -O server.jar
 ```
 
 !!! information
